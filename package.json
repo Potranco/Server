@@ -1,26 +1,38 @@
 {
   "name": "server-express",
   "version": "1.0.0",
-  "description": "Server Express",
-  "main": "server.js",
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-es2015": "^6.24.1",
-    "express": "^4.16.2"
-  },
-  "scripts": {
-    "start": "npm run compile && node dist/index.js",
-    "dev": "npm run compile && nodemon dist/index.js",
-    "compile": "babel src/server.js --out-file dist/index.js"
-  },
+  "description": "Server Node.js with Express",
+  "main": "dist/server.js",
   "author": "Potranco",
   "license": "ISC",
+  "scripts": {
+    "start": "npm run compile && node dist/server.js",
+    "dev": "npm run compile && nodemon dist/server.js",
+    "compile": "gulp compile",
+    "validate": "standard",
+    "validateFix": "standard --fix",
+    "test": "standard && mocha"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
+    "mocha": "^5.0.1",
     "nodemon": "^1.12.1",
     "standard": "^11.0.0"
+  },
+  "babel": {
+    "presets": "es2015"
+  },
+  "standard": {
+    "ignore": [
+      "gulpfile.js",
+      "/dist/"
+    ]
   }
 }
