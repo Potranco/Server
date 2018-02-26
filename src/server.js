@@ -2,7 +2,7 @@ import express from 'express';
 
 const app = express();
 
-app.use('/assets',express.static('dist'));
+app.use('/assets', express.static('dist'));
 
 app.get('/', function (req, res) {
   let componente = 'server code';
@@ -27,4 +27,6 @@ app.get('/', function (req, res) {
 
 app.listen(3000, function () {
   console.log('Example server app listening on port 3000!')
+  console.log('http://localhost:3000')
+  console.log('CTRL-C to exit!')
 });

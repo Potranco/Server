@@ -10,8 +10,9 @@
     "express": "^4.16.2"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "babel server.js --out-file index.js && nodemon index.js"
+    "start": "npm run compile && node dist/index.js",
+    "dev": "npm run compile && nodemon dist/index.js",
+    "compile": "babel src/server.js --out-file dist/index.js"
   },
   "author": "Potranco",
   "license": "ISC",
