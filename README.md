@@ -12,6 +12,6 @@ server: http://localhost:3000
 
 # Next steps
 
-- Create gets services
-- Create compiler with gulp & babel
+- Test basic sesrver
+- Create get services
 - Delete nodemon & create dev server process ;)
