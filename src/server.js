@@ -1,5 +1,6 @@
 import express from 'express'
 const app = express()
+const port = 3000
 
 app.use('/assets', express.static('dist'))
 
@@ -23,7 +24,7 @@ app.get('/', function (req, res) {
   res.send(html)
 })
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log('Example server app listening on port 3000!')
   console.log('http://localhost:3000')
   console.log('CTRL-C to exit!')
