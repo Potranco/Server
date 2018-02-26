@@ -1,7 +1,8 @@
 import express from 'express'
+const character = require('./routers/character.js')
 const app = express()
 const port = 3000
-const router = express.Router()
+
 
 app.use('/assets', express.static('dist'))
 app.get('/', function (req, res) {
@@ -24,16 +25,8 @@ app.get('/', function (req, res) {
   res.send(html)
 })
 
-router.get('/', function (req, res, next) {
-  res.send('peticion con router.get')
-  next()
-})
 
-router.get('/about', function (req, res, next) {
-  res.send('Peticon /about con router.get')
-})
-
-app.use('/', router)
+//app.use('/', character)
 
 app.listen(port, function () {
   console.log('Example server app listening on port 3000!')
