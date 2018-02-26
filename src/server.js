@@ -1,11 +1,10 @@
-import express from 'express';
+import express from 'express'
+const app = express()
 
-const app = express();
-
-app.use('/assets', express.static('dist'));
+app.use('/assets', express.static('dist'))
 
 app.get('/', function (req, res) {
-  let componente = 'server code';
+  let componente = 'server code'
   const html = `
     <html>
     <head>
@@ -20,13 +19,12 @@ app.get('/', function (req, res) {
       <script src="/assets/app.js"></script>
     </body>
     </html>
-  `;
-  res.send(html);
-});
-
+  `
+  res.send(html)
+})
 
 app.listen(3000, function () {
   console.log('Example server app listening on port 3000!')
   console.log('http://localhost:3000')
   console.log('CTRL-C to exit!')
-});
+})
