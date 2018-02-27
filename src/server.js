@@ -1,9 +1,9 @@
 import express from 'express'
+import character from './routers/character.js'
 const app = express()
 const port = 3000
 
 app.use('/assets', express.static('dist'))
-
 app.get('/', function (req, res) {
   let componente = 'server code'
   const html = `
@@ -23,6 +23,8 @@ app.get('/', function (req, res) {
   `
   res.send(html)
 })
+
+app.use('/', character)
 
 app.listen(port, function () {
   console.log('Example server app listening on port 3000!')
