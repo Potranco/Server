@@ -4,7 +4,7 @@
 Basic Server in Node.js
 
 INSTALL: npm i
-DEV: npm run dev (with nodemon)
+DEV: npm run dev (dev === start)
 Start: npm start
 ```
 
