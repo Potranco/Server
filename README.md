@@ -13,5 +13,6 @@ server: http://localhost:3000
 # Next steps
 
 - Test basic sesrver
-- Create get services
-- Delete nodemon & create dev server process ;)
+- Create get services user, chars, campaign,...
+- Delete /dist of git
+- Create dev server process ;)
