@@ -1,19 +1,18 @@
-function template ({ body, title }) {
+function template (content = {
+  title: 'Project D20',
+  body: '<h1>Project D20</h1>'
+}) {
   return `
     <!DOCTYPE html>
     <html>
-      <head>
-        <title>${title}</title>
-      </head>
-      <body>
-        <h1>Server component</h1>
-        <div id="root">${body}</div>
-        <h1>Client component</h1>
-        <div id="app">${body}</div>
-        <script src="/assets/app.js"></script>
-      </body>
+    <head>
+      <title>${content.title}</title>
+    </head>
+    <body>
+        ${content.body}
+    </body>
     </html>
   `
 }
 
-module.export = template
+export default template
