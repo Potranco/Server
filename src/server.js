@@ -1,5 +1,6 @@
 import express from 'express'
 import character from './routers/character.js'
+import user from './routers/user.js'
 const app = express()
 const port = 3000
 
@@ -25,6 +26,7 @@ app.get('/', function (req, res) {
 })
 
 app.use('/', character)
+app.use('/', user)
 
 app.listen(port, function () {
   console.log('Example server app listening on port 3000!')

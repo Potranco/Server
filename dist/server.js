@@ -8,6 +8,10 @@ var _character = require('./routers/character.js');
 
 var _character2 = _interopRequireDefault(_character);
 
+var _user = require('./routers/user.js');
+
+var _user2 = _interopRequireDefault(_user);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -21,6 +25,7 @@ app.get('/', function (req, res) {
 });
 
 app.use('/', _character2.default);
+app.use('/', _user2.default);
 
 app.listen(port, function () {
   console.log('Example server app listening on port 3000!');
