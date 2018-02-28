@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "start": "npm run compile && node dist/server.js",
-    "dev": "npm run compile && node dist/server.js",
+    "dev": "npm run compile && nodemon dist/server.js",
     "compile": "gulp bundle-server",
     "validate": "standard",
     "validateFix": "standard --fix",
