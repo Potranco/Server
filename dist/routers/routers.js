@@ -21,7 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Routers(app) {
   app.use('/', _character2.default);
   app.use('/', _user2.default);
-
   app.get('/', function (req, res) {
     res.send((0, _indexHtml2.default)());
   });

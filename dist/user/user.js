@@ -22,15 +22,20 @@ var User = function () {
     this.userId = userId;
     this.name = 'Invitado';
     this.email = '';
-    this.callback = callback;
 
     (0, _user.getUser)(this.userId).then(function (user) {
       return _this.set(user);
     }).catch(function () {
-      return _this.set({
+      // onError create new user default
+      var newUser = {
         userId: 0,
         name: 'Invitado',
         email: ''
+      };
+      _this.set(newUser).then(function () {
+        return callback();
+      }).catch(function (error) {
+        return console.log('Not User.set: ', error);
       });
     });
   }
@@ -38,14 +43,18 @@ var User = function () {
   _createClass(User, [{
     key: 'set',
     value: function set(_ref) {
+      var _this2 = this;
+
       var userId = _ref.userId,
           name = _ref.name,
           email = _ref.email;
 
-      this.userId = userId;
-      this.name = name;
-      this.email = email;
-      this.callback();
+      return new Promise(function (resolve, reject) {
+        _this2.userId = userId;
+        _this2.name = name;
+        _this2.email = email;
+        resolve(_this2.get());
+      });
     }
   }, {
     key: 'get',
@@ -59,12 +68,12 @@ var User = function () {
   }, {
     key: 'save',
     value: function save() {
-      return true;
+      return this;
     }
   }, {
     key: 'delete',
     value: function _delete() {
-      return true;
+      return this;
     }
   }]);
 

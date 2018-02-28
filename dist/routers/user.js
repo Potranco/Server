@@ -28,6 +28,7 @@ user.get('/user', function (req, res, next) {
 user.get('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
+    console.log('Callback inicio');
     var content = {
       title: 'Project D20 page user' + user.get().name,
       user: user.get()
@@ -38,7 +39,12 @@ user.get('/user/:id', function (req, res, next) {
 });
 
 user.post('/user/:id', function (req, res, next) {
-  res.send('post user id');
+  var userId = req.params.id;
+  var user = new _User2.default(userId, function () {
+    user.save();
+    res.send('post user id');
+    next();
+  });
 });
 
 exports.default = user;

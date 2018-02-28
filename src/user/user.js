@@ -5,22 +5,29 @@ class User {
     this.userId = userId
     this.name = 'Invitado'
     this.email = ''
-    this.callback = callback
 
     getUser(this.userId)
       .then((user) => this.set(user))
-      .catch(() => this.set({
-        userId: 0,
-        name: 'Invitado',
-        email: ''
-      }))
+      .catch(() => {
+        // onError create new user default
+        let newUser = {
+          userId: 0,
+          name: 'Invitado',
+          email: ''
+        }
+        this.set(newUser)
+          .then(() => callback())
+          .catch((error) => console.log('Not User.set: ', error))
+      })
   }
 
   set ({ userId, name, email }) {
-    this.userId = userId
-    this.name = name
-    this.email = email
-    this.callback()
+    return (new Promise((resolve, reject) => {
+      this.userId = userId
+      this.name = name
+      this.email = email
+      resolve(this.get())
+    }))
   }
 
   get () {
@@ -32,11 +39,11 @@ class User {
   }
 
   save () {
-    return true
+    return this
   }
 
   delete () {
-    return true
+    return this
   }
 }
 

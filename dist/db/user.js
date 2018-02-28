@@ -34,8 +34,7 @@ function getUser(userId) {
 
       users.find({ userId: userId }).toArray(function (error, user) {
         if (error) reject(error);
-        if (user.length) resolve(user);
-        reject(error);
+        if (user.length) resolve(user);else reject(error);
       });
     }).catch(function (error) {
       return console.log(error);

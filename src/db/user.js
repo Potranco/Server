@@ -23,7 +23,7 @@ function getUser (userId) {
         users.find({userId: userId}).toArray((error, user) => {
           if (error) reject(error)
           if (user.length) resolve(user)
-          reject(error)
+          else reject(error)
         })
       })
       .catch((error) => console.log(error))
