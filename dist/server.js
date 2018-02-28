@@ -16,6 +16,10 @@ var _indexHtml = require('./templates/index-html.js');
 
 var _indexHtml2 = _interopRequireDefault(_indexHtml);
 
+var _userDefault = require('./user/userDefault.js');
+
+var _userDefault2 = _interopRequireDefault(_userDefault);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -26,11 +30,14 @@ app.use('/', _character2.default);
 app.use('/', _user2.default);
 
 app.get('/', function (req, res) {
-  res.send((0, _indexHtml2.default)());
+  var content = {
+    title: 'Project D20',
+    user: _userDefault2.default
+  };
+  res.send((0, _indexHtml2.default)(content));
 });
 
 app.listen(port, function () {
-  console.log('Example server app listening on port 3000!');
-  console.log('http://localhost:3000');
+  console.log('Project D20 Server in http://localhost:3000');
   console.log('CTRL-C to exit!');
 });
