@@ -22,7 +22,12 @@ user.get('/user/:id', function (req, res, next) {
 })
 
 user.post('/user/:id', function (req, res, next) {
-  res.send('post user id')
+  let userId = req.params.id
+  let user = new User(userId, () => {
+    user.save()
+    res.send('post user id')
+    next()
+  })
 })
 
 export default user
