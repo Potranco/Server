@@ -27,14 +27,16 @@ user.get('/user', function (req, res, next) {
 
 user.get('/user/:id', function (req, res, next) {
   var userId = req.params.id;
-  var user = new _User2.default(userId);
-  var content = {
-    title: 'Project D20 page user' + userId,
-    user: user.get()
-  };
+  var user = new _User2.default(userId, function () {
+    console.log('cagada');
+    var content = {
+      title: 'Project D20 page user' + userId,
+      user: user.get()
+    };
 
-  res.send((0, _indexHtml2.default)(content));
-  next();
+    res.send((0, _indexHtml2.default)(content));
+    next();
+  });
 });
 
 user.post('/user/:id', function (req, res, next) {
