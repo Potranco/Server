@@ -16,9 +16,9 @@ var _indexHtml = require('../templates/index-html.js');
 
 var _indexHtml2 = _interopRequireDefault(_indexHtml);
 
-var _userDefault = require('../user/userDefault.js');
+var _User = require('../user/User.js');
 
-var _userDefault2 = _interopRequireDefault(_userDefault);
+var _User2 = _interopRequireDefault(_User);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27,9 +27,10 @@ function Routers(app) {
   app.use('/', _user2.default);
 
   app.get('/', function (req, res) {
+    var newUser = new _User2.default(0);
     var content = {
       title: 'Project D20',
-      user: _userDefault2.default
+      user: newUser.get()
     };
     res.send((0, _indexHtml2.default)(content));
   });
