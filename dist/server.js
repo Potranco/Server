@@ -22,15 +22,14 @@ var app = (0, _express2.default)();
 var port = 3000;
 
 app.use('/assets', _express2.default.static('dist'));
+app.use('/', _character2.default);
+app.use('/', _user2.default);
+
 app.get('/', function (req, res) {
   res.send((0, _indexHtml2.default)());
 });
 
-app.use('/', _character2.default);
-app.use('/', _user2.default);
-
 app.listen(port, function () {
-  console.log((0, _indexHtml2.default)());
   console.log('Example server app listening on port 3000!');
   console.log('http://localhost:3000');
   console.log('CTRL-C to exit!');
