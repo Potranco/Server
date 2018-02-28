@@ -13,7 +13,7 @@ user.get('/user/:id', function (req, res, next) {
   let userId = req.params.id
   let user = new User(userId, () => {
     let content = {
-      title: 'Project D20 page user' + userId,
+      title: 'Project D20 page user' + user.get().name,
       user: user.get()
     }
     res.send(template(content))
