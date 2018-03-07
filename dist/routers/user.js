@@ -21,14 +21,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var user = _express2.default.Router();
 
 user.get('/user', function (req, res, next) {
-  res.send('Get user loaded');
+  res.send((0, _indexHtml2.default)());
   next();
 });
 
 user.get('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
-    console.log('Callback inicio');
     var content = {
       title: 'Project D20 page user' + user.get().name,
       user: user.get()
@@ -42,7 +41,11 @@ user.post('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
     user.save();
-    res.send('post user id');
+    var content = {
+      title: 'Project D20 user Post' + user.get().name,
+      user: user.get()
+    };
+    res.send((0, _indexHtml2.default)(content));
     next();
   });
 });

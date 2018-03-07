@@ -5,7 +5,7 @@ import User from '../user/User.js'
 const user = express.Router()
 
 user.get('/user', function (req, res, next) {
-  res.send('Get user loaded')
+  res.send(template())
   next()
 })
 
@@ -25,7 +25,11 @@ user.post('/user/:id', function (req, res, next) {
   let userId = req.params.id
   let user = new User(userId, () => {
     user.save()
-    res.send('post user id')
+    let content = {
+      title: 'Project D20 user Post' + user.get().name,
+      user: user.get()
+    }
+    res.send(template(content))
     next()
   })
 })

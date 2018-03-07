@@ -6,7 +6,7 @@ function Routers (app) {
   app.use('/', character)
   app.use('/', user)
   app.get('/', function (req, res) {
-    res.send(template())
+    res.status(200).send(template())
   })
 }
 

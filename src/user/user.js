@@ -7,8 +7,12 @@ class User {
     this.email = ''
 
     getUser(this.userId)
-      .then((user) => this.set(user))
-      .catch(() => {
+      .then((user) => {
+        this.set(user)
+          .success(() => callback())
+      })
+      .catch((error) => {
+        console.log(error)
         // onError create new user default
         let newUser = {
           userId: 0,
@@ -16,18 +20,22 @@ class User {
           email: ''
         }
         this.set(newUser)
-          .then(() => callback())
+          .success(() => callback())
           .catch((error) => console.log('Not User.set: ', error))
       })
   }
 
   set ({ userId, name, email }) {
-    return (new Promise((resolve, reject) => {
+    const setUser = new Promise((resolve, reject) => {
       this.userId = userId
       this.name = name
       this.email = email
       resolve(this.get())
-    }))
+    })
+
+    return {
+      success: (value) => setUser.then(value)
+    }
   }
 
   get () {
@@ -39,7 +47,14 @@ class User {
   }
 
   save () {
-    return this
+    const saveUserDB = new Promise((resolve, reject) => {
+      // insert or update DDBB
+      resolve(true)
+    })
+
+    return {
+      success: (value) => saveUserDB.then(value)
+    }
   }
 
   delete () {
