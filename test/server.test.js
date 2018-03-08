@@ -5,7 +5,7 @@ const server = require('../dist/server.js')
 
 let describe = mocha.describe
 let it = mocha.it
-let should = chai.should()
+let expect = chai.expect
 chai.use(chaiHttp)
 let urlServer = 'http://localhost:3000'
 
@@ -15,7 +15,7 @@ describe('Server in http://localhost:3000', function () {
       chai.request(urlServer)
         .get('/')
         .end(function (e, res) {
-          res.should.have.status(200)
+          expect(res.status).to.equal(200)
           done()
         })
     })
@@ -24,7 +24,7 @@ describe('Server in http://localhost:3000', function () {
         chai.request(urlServer)
           .get('/user')
           .end(function (e, res) {
-            res.should.have.status(200)
+            expect(res.status).to.equal(200)
             done()
           })
       })
@@ -35,7 +35,7 @@ describe('Server in http://localhost:3000', function () {
         chai.request(urlServer)
           .get('/character')
           .end(function (e, res) {
-            res.should.have.status(200)
+            expect(res.status).to.equal(200)
             done()
           })
       })
