@@ -19,23 +19,26 @@ describe('Server in http://localhost:3000', function () {
           done()
         })
     })
-
-    it('responds to /user', function (done) {
-      chai.request(urlServer)
-        .get('/user')
-        .end(function (e, res) {
-          res.should.have.status(200)
-          done()
-        })
+    describe('/user', function () {
+      it('responds to /user', function (done) {
+        chai.request(urlServer)
+          .get('/user')
+          .end(function (e, res) {
+            res.should.have.status(200)
+            done()
+          })
+      })
     })
 
-    it('responds to /character', function (done) {
-      chai.request(urlServer)
-        .get('/character')
-        .end(function (e, res) {
-          res.should.have.status(200)
-          done()
-        })
+    describe('/character', function () {
+      it('responds to /character', function (done) {
+        chai.request(urlServer)
+          .get('/character')
+          .end(function (e, res) {
+            res.should.have.status(200)
+            done()
+          })
+      })
     })
   })
 })
