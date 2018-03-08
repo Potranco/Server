@@ -1,26 +1,41 @@
 const mocha = require('mocha')
-const request = require('supertest')
-const describe = mocha.describe
-const it = mocha.it
-const beforeEach = mocha.beforeEach
-const afterEach = mocha.afterEach
+const chai = require('chai')
+const chaiHttp = require('chai-http')
+const server = require('../dist/server.js')
 
-describe('server.js', function () {
-  var server
+let describe = mocha.describe
+let it = mocha.it
+let should = chai.should()
+chai.use(chaiHttp)
+let urlServer = 'http://localhost:3000'
 
-  beforeEach(function () {
-    server = require('../dist/server.js')
-  })
+describe('Server in http://localhost:3000', function () {
+  describe('Gets', function () {
+    it('responds to /', function (done) {
+      chai.request(urlServer)
+        .get('/')
+        .end(function (e, res) {
+          res.should.have.status(200)
+          done()
+        })
+    })
 
-  afterEach(function () {
-    server.close()
-  })
+    it('responds to /user', function (done) {
+      chai.request(urlServer)
+        .get('/user')
+        .end(function (e, res) {
+          res.should.have.status(200)
+          done()
+        })
+    })
 
-  it('responds to /', function testSlash (done) {
-    request(server)
-      .get('/')
-      .expect(200, function (res, req) {
-        console.log(res)
-      })
+    it('responds to /character', function (done) {
+      chai.request(urlServer)
+        .get('/character')
+        .end(function (e, res) {
+          res.should.have.status(200)
+          done()
+        })
+    })
   })
 })
