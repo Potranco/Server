@@ -2,14 +2,14 @@ import express from 'express'
 import template from '../templates/index-html.js'
 import User from '../user/User.js'
 
-const user = express.Router()
+const router = express.Router()
 
-user.get('/user', function (req, res, next) {
+router.get('/user', function (req, res, next) {
   res.send(template())
   next()
 })
 
-user.get('/user/:id', function (req, res, next) {
+router.get('/user/:id', function (req, res, next) {
   let userId = req.params.id
   let user = new User(userId, () => {
     let content = {
@@ -21,7 +21,7 @@ user.get('/user/:id', function (req, res, next) {
   })
 })
 
-user.post('/user/:id', function (req, res, next) {
+router.post('/user/:id', function (req, res, next) {
   let userId = req.params.id
   let user = new User(userId, () => {
     user.save()
@@ -34,4 +34,4 @@ user.post('/user/:id', function (req, res, next) {
   })
 })
 
-export default user
+export default router

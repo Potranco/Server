@@ -18,14 +18,14 @@ var _User2 = _interopRequireDefault(_User);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var user = _express2.default.Router();
+var router = _express2.default.Router();
 
-user.get('/user', function (req, res, next) {
+router.get('/user', function (req, res, next) {
   res.send((0, _indexHtml2.default)());
   next();
 });
 
-user.get('/user/:id', function (req, res, next) {
+router.get('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
     var content = {
@@ -37,7 +37,7 @@ user.get('/user/:id', function (req, res, next) {
   });
 });
 
-user.post('/user/:id', function (req, res, next) {
+router.post('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
     user.save();
@@ -50,4 +50,4 @@ user.post('/user/:id', function (req, res, next) {
   });
 });
 
-exports.default = user;
+exports.default = router;
