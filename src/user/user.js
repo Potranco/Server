@@ -16,18 +16,23 @@ class User {
           email: ''
         }
         this.set(newUser)
-          .then(() => callback())
-          .catch((error) => console.log('Not User.set: ', error))
+          .success((user) => callback())
+          .error((error) => console.log('Not User.set: ', error))
       })
   }
 
   set ({ userId, name, email }) {
-    return (new Promise((resolve, reject) => {
+    const setUser = new Promise((resolve, reject) => {
       this.userId = userId
       this.name = name
       this.email = email
-      resolve(this.get())
-    }))
+      resolve()
+    })
+
+    return {
+      success: setUser.resolve(),
+      error: setUser.reject()
+    }
   }
 
   get () {

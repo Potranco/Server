@@ -32,9 +32,9 @@ var User = function () {
         name: 'Invitado',
         email: ''
       };
-      _this.set(newUser).then(function () {
+      _this.set(newUser).success(function (user) {
         return callback();
-      }).catch(function (error) {
+      }).error(function (error) {
         return console.log('Not User.set: ', error);
       });
     });
@@ -49,12 +49,17 @@ var User = function () {
           name = _ref.name,
           email = _ref.email;
 
-      return new Promise(function (resolve, reject) {
+      var setUser = new Promise(function (resolve, reject) {
         _this2.userId = userId;
         _this2.name = name;
         _this2.email = email;
-        resolve(_this2.get());
+        resolve();
       });
+
+      return {
+        success: setUser.resolve(),
+        error: setUser.reject()
+      };
     }
   }, {
     key: 'get',
