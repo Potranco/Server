@@ -4,8 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var userDefault = {
+  userId: 0,
   name: 'Invitado',
-  id: 0
+  email: ''
 };
 
 exports.default = userDefault;

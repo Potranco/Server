@@ -7,14 +7,16 @@ function connect (configDB) {
 
   return (new Promise((resolve, reject) => {
     MongoClient.connect(url, function (error, client) {
-      if (error) reject(error)
-      else resolve(client)
+      if (error) {
+        console.log('Mongo Network Error!')
+        reject(error)
+      } else resolve(client)
     })
   }))
 }
 
 function getUser (userId) {
-  return (new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     connect(config)
       .then((clientDB) => {
         let DB = clientDB.db(config.dbName)
@@ -26,8 +28,8 @@ function getUser (userId) {
           else reject(error)
         })
       })
-      .catch((error) => console.log(error))
-  }))
+      .catch(reject)
+  })
 }
 
 export {getUser}

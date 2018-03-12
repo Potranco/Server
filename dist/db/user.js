@@ -21,7 +21,10 @@ function connect(configDB) {
 
   return new Promise(function (resolve, reject) {
     _mongodb.MongoClient.connect(url, function (error, client) {
-      if (error) reject(error);else resolve(client);
+      if (error) {
+        console.log('Mongo Network Error!');
+        reject(error);
+      } else resolve(client);
     });
   });
 }
@@ -36,9 +39,7 @@ function getUser(userId) {
         if (error) reject(error);
         if (user.length) resolve(user);else reject(error);
       });
-    }).catch(function (error) {
-      return console.log(error);
-    });
+    }).catch(reject);
   });
 }
 

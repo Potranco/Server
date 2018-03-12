@@ -1,4 +1,5 @@
 import { getUser } from '../db/user.js'
+import userDefault from './userDefault.js'
 
 class User {
   constructor (userId = 0, callback) {
@@ -11,32 +12,21 @@ class User {
         this.set(user)
           .success(() => callback())
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
         // onError create new user default
-        let newUser = {
-          userId: 0,
-          name: 'Invitado',
-          email: ''
-        }
-        this.set(newUser)
-          .success((user) => callback())
-          .error((error) => console.log('Not User.set: ', error))
+        this.set(userDefault)
+          .then((user) => callback())
+          .catch((error) => console.log('Not User.set: ', error))
       })
   }
 
   set ({ userId, name, email }) {
-    const setUser = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.userId = userId
       this.name = name
       this.email = email
-      resolve()
+      resolve(userDefault)
     })
-
-    return {
-      success: setUser.resolve(),
-      error: setUser.reject()
-    }
   }
 
   get () {

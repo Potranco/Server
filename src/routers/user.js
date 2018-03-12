@@ -12,7 +12,6 @@ router.get('/user', function (req, res, next) {
 router.get('/user/:id', function (req, res, next) {
   let userId = req.params.id
   let user = new User(userId, () => {
-    console.log('newUser.getUser.setUser.success')
     let content = {
       title: 'Project D20 page user' + user.get().name,
       user: user.get()

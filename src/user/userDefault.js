@@ -1,6 +1,7 @@
 const userDefault = {
+  userId: 0,
   name: 'Invitado',
-  id: 0
+  email: ''
 }
 
 export default userDefault

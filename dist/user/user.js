@@ -8,6 +8,12 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _user = require('../db/user.js');
 
+var _userDefault = require('./userDefault.js');
+
+var _userDefault2 = _interopRequireDefault(_userDefault);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var User = function () {
@@ -27,17 +33,11 @@ var User = function () {
       _this.set(user).success(function () {
         return callback();
       });
-    }).catch(function (error) {
-      console.log(error);
+    }).catch(function () {
       // onError create new user default
-      var newUser = {
-        userId: 0,
-        name: 'Invitado',
-        email: ''
-      };
-      _this.set(newUser).success(function (user) {
+      _this.set(_userDefault2.default).then(function (user) {
         return callback();
-      }).error(function (error) {
+      }).catch(function (error) {
         return console.log('Not User.set: ', error);
       });
     });
@@ -52,17 +52,12 @@ var User = function () {
           name = _ref.name,
           email = _ref.email;
 
-      var setUser = new Promise(function (resolve, reject) {
+      return new Promise(function (resolve, reject) {
         _this2.userId = userId;
         _this2.name = name;
         _this2.email = email;
-        resolve();
+        resolve(_userDefault2.default);
       });
-
-      return {
-        success: setUser.resolve(),
-        error: setUser.reject()
-      };
     }
   }, {
     key: 'get',
