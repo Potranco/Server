@@ -28,10 +28,7 @@ router.get('/user', function (req, res, next) {
 router.get('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
-<<<<<<< HEAD
     console.log('newUser.getUser.setUser.success');
-=======
->>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
     var content = {
       title: 'Project D20 page user' + user.get().name,
       user: user.get()

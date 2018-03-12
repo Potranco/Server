@@ -35,11 +35,7 @@ var User = function () {
         name: 'Invitado',
         email: ''
       };
-<<<<<<< HEAD
       _this.set(newUser).success(function (user) {
-=======
-      _this.set(newUser).success(function () {
->>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
         return callback();
       }).error(function (error) {
         return console.log('Not User.set: ', error);
@@ -64,14 +60,8 @@ var User = function () {
       });
 
       return {
-<<<<<<< HEAD
         success: setUser.resolve(),
         error: setUser.reject()
-=======
-        success: function success(value) {
-          return setUser.then(value);
-        }
->>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
       };
     }
   }, {
