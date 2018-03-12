@@ -2,14 +2,14 @@ import express from 'express'
 import template from '../templates/index-html.js'
 import User from '../user/User.js'
 
-const user = express.Router()
+const router = express.Router()
 
-user.get('/user', function (req, res, next) {
-  res.send('Get user loaded')
+router.get('/user', function (req, res, next) {
+  res.send(template())
   next()
 })
 
-user.get('/user/:id', function (req, res, next) {
+router.get('/user/:id', function (req, res, next) {
   let userId = req.params.id
   let user = new User(userId, () => {
     console.log('newUser.getUser.setUser.success')
@@ -22,13 +22,17 @@ user.get('/user/:id', function (req, res, next) {
   })
 })
 
-user.post('/user/:id', function (req, res, next) {
+router.post('/user/:id', function (req, res, next) {
   let userId = req.params.id
   let user = new User(userId, () => {
     user.save()
-    res.send('post user id')
+    let content = {
+      title: 'Project D20 user Post' + user.get().name,
+      user: user.get()
+    }
+    res.send(template(content))
     next()
   })
 })
 
-export default user
+export default router

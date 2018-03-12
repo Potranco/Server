@@ -7,8 +7,12 @@ class User {
     this.email = ''
 
     getUser(this.userId)
-      .then((user) => this.set(user))
-      .catch(() => {
+      .then((user) => {
+        this.set(user)
+          .success(() => callback())
+      })
+      .catch((error) => {
+        console.log(error)
         // onError create new user default
         let newUser = {
           userId: 0,
@@ -16,8 +20,13 @@ class User {
           email: ''
         }
         this.set(newUser)
+<<<<<<< HEAD
           .success((user) => callback())
           .error((error) => console.log('Not User.set: ', error))
+=======
+          .success(() => callback())
+          .catch((error) => console.log('Not User.set: ', error))
+>>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
       })
   }
 
@@ -26,12 +35,20 @@ class User {
       this.userId = userId
       this.name = name
       this.email = email
+<<<<<<< HEAD
       resolve()
     })
 
     return {
       success: setUser.resolve(),
       error: setUser.reject()
+=======
+      resolve(this.get())
+    })
+
+    return {
+      success: (value) => setUser.then(value)
+>>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
     }
   }
 
@@ -44,7 +61,14 @@ class User {
   }
 
   save () {
-    return this
+    const saveUserDB = new Promise((resolve, reject) => {
+      // insert or update DDBB
+      resolve(true)
+    })
+
+    return {
+      success: (value) => saveUserDB.then(value)
+    }
   }
 
   delete () {

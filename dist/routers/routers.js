@@ -18,12 +18,12 @@ var _indexHtml2 = _interopRequireDefault(_indexHtml);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Routers(app) {
+function routers(app) {
   app.use('/', _character2.default);
   app.use('/', _user2.default);
   app.get('/', function (req, res) {
-    res.send((0, _indexHtml2.default)());
+    res.status(200).send((0, _indexHtml2.default)());
   });
 }
 
-exports.default = Routers;
+exports.default = routers;

@@ -24,15 +24,22 @@ var User = function () {
     this.email = '';
 
     (0, _user.getUser)(this.userId).then(function (user) {
-      return _this.set(user);
-    }).catch(function () {
+      _this.set(user).success(function () {
+        return callback();
+      });
+    }).catch(function (error) {
+      console.log(error);
       // onError create new user default
       var newUser = {
         userId: 0,
         name: 'Invitado',
         email: ''
       };
+<<<<<<< HEAD
       _this.set(newUser).success(function (user) {
+=======
+      _this.set(newUser).success(function () {
+>>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
         return callback();
       }).error(function (error) {
         return console.log('Not User.set: ', error);
@@ -57,8 +64,14 @@ var User = function () {
       });
 
       return {
+<<<<<<< HEAD
         success: setUser.resolve(),
         error: setUser.reject()
+=======
+        success: function success(value) {
+          return setUser.then(value);
+        }
+>>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
       };
     }
   }, {
@@ -73,7 +86,16 @@ var User = function () {
   }, {
     key: 'save',
     value: function save() {
-      return this;
+      var saveUserDB = new Promise(function (resolve, reject) {
+        // insert or update DDBB
+        resolve(true);
+      });
+
+      return {
+        success: function success(value) {
+          return saveUserDB.then(value);
+        }
+      };
     }
   }, {
     key: 'delete',

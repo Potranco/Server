@@ -18,17 +18,20 @@ var _User2 = _interopRequireDefault(_User);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var user = _express2.default.Router();
+var router = _express2.default.Router();
 
-user.get('/user', function (req, res, next) {
-  res.send('Get user loaded');
+router.get('/user', function (req, res, next) {
+  res.send((0, _indexHtml2.default)());
   next();
 });
 
-user.get('/user/:id', function (req, res, next) {
+router.get('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
+<<<<<<< HEAD
     console.log('newUser.getUser.setUser.success');
+=======
+>>>>>>> e429c1ea9be7714ca19cb7f7fda78d464fbaac11
     var content = {
       title: 'Project D20 page user' + user.get().name,
       user: user.get()
@@ -38,13 +41,17 @@ user.get('/user/:id', function (req, res, next) {
   });
 });
 
-user.post('/user/:id', function (req, res, next) {
+router.post('/user/:id', function (req, res, next) {
   var userId = req.params.id;
   var user = new _User2.default(userId, function () {
     user.save();
-    res.send('post user id');
+    var content = {
+      title: 'Project D20 user Post' + user.get().name,
+      user: user.get()
+    };
+    res.send((0, _indexHtml2.default)(content));
     next();
   });
 });
 
-exports.default = user;
+exports.default = router;
