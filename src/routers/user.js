@@ -1,5 +1,5 @@
 import express from 'express'
-import template from '../templates/index-html.js'
+import template from '../templates/index.js'
 import User from '../user/User.js'
 
 const router = express.Router()

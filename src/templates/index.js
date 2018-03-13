@@ -13,7 +13,9 @@ function template (content = {
   <!DOCTYPE html>
   <html>
   ${head(title)}
-  ${pageContent}
+  <body>
+    ${pageContent}
+  <body>
   </html>
   `
 }

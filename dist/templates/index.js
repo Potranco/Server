@@ -27,7 +27,7 @@ function template() {
   var title = content.title;
 
   var pageContent = (0, _getPage2.default)(content);
-  return '\n  <!DOCTYPE html>\n  <html>\n  ' + (0, _head2.default)(title) + '\n  ' + pageContent + '\n  </html>\n  ';
+  return '\n  <!DOCTYPE html>\n  <html>\n  ' + (0, _head2.default)(title) + '\n  <body>\n    ' + pageContent + '\n  <body>\n  </html>\n  ';
 }
 
 exports.default = template;

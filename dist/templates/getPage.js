@@ -9,7 +9,7 @@ function getPage(_ref) {
       user = _ref.user,
       pageName = _ref.pageName;
 
-  var pageContent = '\n    <body>\n        <h1>' + title + '</h1>\n        <h2>Bienvenido ' + user.name + '</h2>\n        ' + menu + '\n    </body>\n    ';
+  var pageContent = '\n    <h1>' + title + '</h1>\n    <h2>Bienvenido ' + user.name + '</h2>\n    ' + menu + '\n  ';
   return pageContent;
 }
 

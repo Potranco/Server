@@ -8,9 +8,9 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _indexHtml = require('../templates/index-html.js');
+var _index = require('../templates/index.js');
 
-var _indexHtml2 = _interopRequireDefault(_indexHtml);
+var _index2 = _interopRequireDefault(_index);
 
 var _User = require('../user/User.js');
 
@@ -21,7 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 
 router.get('/user', function (req, res, next) {
-  res.send((0, _indexHtml2.default)());
+  res.send((0, _index2.default)());
   next();
 });
 
@@ -32,7 +32,7 @@ router.get('/user/:id', function (req, res, next) {
       title: 'Project D20 page user' + user.get().name,
       user: user.get()
     };
-    res.send((0, _indexHtml2.default)(content));
+    res.send((0, _index2.default)(content));
     next();
   });
 });
@@ -45,7 +45,7 @@ router.post('/user/:id', function (req, res, next) {
       title: 'Project D20 user Post' + user.get().name,
       user: user.get()
     };
-    res.send((0, _indexHtml2.default)(content));
+    res.send((0, _index2.default)(content));
     next();
   });
 });
