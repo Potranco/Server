@@ -24,8 +24,6 @@ function template() {
     pageName: 'home',
     user: _userDefault2.default
   };
-
-  console.log('Create Template');
   var title = content.title;
 
   var pageContent = (0, _getPage2.default)(content);
