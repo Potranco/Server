@@ -1,13 +1,11 @@
 import head from './head.js'
 import getPage from './getPage.js'
+import userDefault from '../user/userDefault.js'
 
 function template (content = {
   title: 'Project D20',
   pageName: 'home',
-  user: {
-    name: 'Invitado',
-    id: 0
-  }
+  user: userDefault
 }) {
   const {title} = content
   const pageContent = getPage(content)

@@ -12,16 +12,17 @@ var _getPage = require('./getPage.js');
 
 var _getPage2 = _interopRequireDefault(_getPage);
 
+var _userDefault = require('../user/userDefault.js');
+
+var _userDefault2 = _interopRequireDefault(_userDefault);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function template() {
   var content = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     title: 'Project D20',
     pageName: 'home',
-    user: {
-      name: 'Invitado',
-      id: 0
-    }
+    user: _userDefault2.default
   };
   var title = content.title;
 
