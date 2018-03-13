@@ -1,4 +1,5 @@
-const menu = 'Menu' // Future template Sidebar
+const menu = `<div id="app"></div>
+  <script src="app.js"></script>` // Future template Sidebar
 function getPage ({title, user, pageName}) {
   let pageContent = `
     <h1>${title}</h1>

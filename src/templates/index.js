@@ -7,6 +7,7 @@ function template (content = {
   pageName: 'home',
   user: userDefault
 }) {
+  console.log('Create Template')
   const {title} = content
   const pageContent = getPage(content)
   return `
@@ -14,6 +15,8 @@ function template (content = {
   <html>
   ${head(title)}
   <body>
+  <div id="app"></div>
+  <script src='app.js'></script>
     ${pageContent}
   <body>
   </html>

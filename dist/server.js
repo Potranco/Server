@@ -17,6 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var server = (0, _express2.default)();
 var port = 3000;
 
+server.use(_express2.default.static('public'));
 (0, _index2.default)(server);
 
 server.listen(port, function () {
