@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run compile && node dist/server.js",
     "dev": "npm run compile && nodemon dist/server.js",
-    "compile": "gulp build-server",
+    "compile": "gulp",
     "validate": "standard",
     "validateFix": "standard --fix",
     "test": "npm run compile && mocha --exit"
@@ -40,7 +40,7 @@
     "presets": [
       "es2015",
       "react"
-      ]
+    ]
   },
   "standard": {
     "ignore": [

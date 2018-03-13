@@ -5,6 +5,7 @@ import User from '../user/User.js'
 const router = express.Router()
 
 router.get('/user', function (req, res, next) {
+  console.log(template())
   res.send(template())
   next()
 })

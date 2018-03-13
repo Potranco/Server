@@ -24,10 +24,12 @@ function template() {
     pageName: 'home',
     user: _userDefault2.default
   };
+
+  console.log('Create Template');
   var title = content.title;
 
   var pageContent = (0, _getPage2.default)(content);
-  return '\n  <!DOCTYPE html>\n  <html>\n  ' + (0, _head2.default)(title) + '\n  <body>\n    ' + pageContent + '\n  <body>\n  </html>\n  ';
+  return '\n  <!DOCTYPE html>\n  <html>\n  ' + (0, _head2.default)(title) + '\n  <body>\n  <div id="app"></div>\n  <script src=\'app.js\'></script>\n    ' + pageContent + '\n  <body>\n  </html>\n  ';
 }
 
 exports.default = template;

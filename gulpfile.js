@@ -27,17 +27,21 @@ gulp.task('build-client', function() {
 
 /* Server */
 gulp.task('build-server', function () {
-  return gulp.src([
-      `${path.src}/db/**/*.js`,
-      `${path.src}/routers/**/*.js`,
-      `${path.src}/templates/**/*.js`,
-      `${path.src}/user/**/*.js`,
-      `${path.src}/server.js`
-    ])
-    .pipe(babel({
-      presets: ['es2015']}
-    ))
-    .pipe(gulp.dest(path.dest));
+  gulp.src(`${path.src}/db/**/*.js`)
+    .pipe(babel({ presets: ['es2015']} ))
+    .pipe(gulp.dest(path.dest+'/db'));
+  gulp.src(`${path.src}/routers/**/*.js`)
+    .pipe(babel({ presets: ['es2015']} ))
+    .pipe(gulp.dest(path.dest+'/routers'));
+  gulp.src(`${path.src}/templates/**/*.js`)
+    .pipe(babel({ presets: ['es2015']} ))
+    .pipe(gulp.dest(path.dest+'/templates'));
+  gulp.src(`${path.src}/user/**/*.js`)
+      .pipe(babel({ presets: ['es2015']} ))
+      .pipe(gulp.dest(path.dest+'/user'));
+  gulp.src(`${path.src}/server.js`)
+      .pipe(babel({ presets: ['es2015']} ))
+      .pipe(gulp.dest(path.dest));
 })
 
 gulp.task('watch', function () {
