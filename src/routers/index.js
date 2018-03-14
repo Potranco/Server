@@ -1,6 +1,6 @@
 import character from './character.js'
 import user from './user.js'
-import template from '../templates/index-html.js'
+import template from '../templates/index.js'
 
 function routers (app) {
   app.use('/', character)

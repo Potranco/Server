@@ -4,6 +4,7 @@ import Routers from './routers/index.js'
 const server = express()
 const port = 3000
 
+server.use(express.static('./dist/public'))
 Routers(server)
 
 server.listen(port, function () {
