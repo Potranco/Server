@@ -14,9 +14,11 @@ function template (content = {
   <html>
   ${head(title)}
   <body>
-  <div id="app"></div>
-  <script src='app.js'></script>
-    ${pageContent}
+    <div id="app">
+      ${pageContent}
+    </div>
+    <!-- webapp client -->
+    <script src='app.js'></script>
   <body>
   </html>
   `
