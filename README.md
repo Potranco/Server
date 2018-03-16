@@ -14,6 +14,7 @@ server: http://localhost:3000
 
 # Next steps
 
+- Refactor class User for osomorfic class -> server (consume mongodb) & client (consume Api rest)
 - Create correct get services user, chars, campaign,...
 - Create basic skeduler of page in react components
 - Create Api rest for user calls in client web side
