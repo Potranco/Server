@@ -1,6 +1,6 @@
 import express from 'express'
 import template from '../templates/index.js'
-import User from '../user/User.js'
+import User from '../db/user.js'
 
 const router = express.Router()
 

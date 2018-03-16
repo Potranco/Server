@@ -1,4 +1,3 @@
-import { getUser } from '../db/user.js'
 import userDefault from './userDefault.js'
 
 class User {
@@ -6,21 +5,10 @@ class User {
     this.userId = userId
     this.name = 'Invitado'
     this.email = ''
-
-    getUser(this.userId)
-      .then((user) => {
-        this.set(user)
-          .success(() => callback())
-      })
-      .catch(() => {
-        // onError create new user default
-        this.set(userDefault)
-          .then((user) => callback())
-          .catch((error) => console.log('Not User.set: ', error))
-      })
   }
 
-  set ({ userId, name, email }) {
+  set (user) {
+    var { userId, name, email } = user
     return new Promise((resolve, reject) => {
       this.userId = userId
       this.name = name
