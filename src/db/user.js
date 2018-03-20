@@ -1,20 +1,24 @@
 import { MongoClient } from 'mongodb'
 import config from './config.js'
 import User from '../user/index.js'
+import userDefault from '../user/userDefault.js'
 
 class UserServer extends User {
   constructor (userId, callback) {
     super()
-    this.getUser(userId)
+    this.callback = callback
+  }
+
+  loadUser () {
+    this.get(this.id)
       .then((user) => {
         this.set(user)
-          .success(() => callback())
+          .then((user) => this.callback(user))
       })
       .catch(() => {
         // onError create new user default
-        this.set(super.userDefault)
-          .then((user) => callback())
-          .catch((error) => console.log('Not User.set: ', error))
+        this.set(userDefault)
+          .then((user) => this.callback(user))
       })
   }
 
@@ -32,7 +36,7 @@ class UserServer extends User {
     }))
   }
 
-  getUser (userId) {
+  get (userId) {
     return new Promise((resolve, reject) => {
       this.connect(config)
         .then((clientDB) => {

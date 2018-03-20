@@ -1,7 +1,6 @@
 import head from './head.js'
 import getPage from './getPage.js'
 import userDefault from '../user/userDefault.js'
-import app from '../components/app.js'
 
 function template (content = {
   title: 'Project D20',
@@ -16,7 +15,6 @@ function template (content = {
   ${head(title)}
   <body>
     ${pageContent}
-    ${app}
   <body>
   </html>
   `
