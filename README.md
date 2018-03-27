@@ -14,8 +14,9 @@ server: http://localhost:3000
 
 # Next steps
 
-- Refactor class User for osomorfic class -> server (consume mongodb) & client (consume Api rest)
+- Create sidebar menu in react components
+- Add control user (create, update & delete) with use api/user
+- Refactor test server
+- Refactor class User server (consume mongodb)
 - Create correct get services user, chars, campaign,...
-- Create basic skeduler of page in react components
-- Create Api rest for user calls in client web side
 - Refactor XD

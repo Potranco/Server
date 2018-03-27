@@ -19,7 +19,7 @@ function routers (app) {
       res.writeHead(301, {Location: context.url})
     } else {
       const html = template(AppServerRender)
-      res.send(html)
+      res.status(200).send(html)
     }
   })
 }

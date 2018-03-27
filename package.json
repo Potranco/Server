@@ -11,7 +11,7 @@
     "compile": "gulp",
     "validate": "standard",
     "validateFix": "standard --fix",
-    "test": "npm run compile && mocha --exit"
+    "test": "npm run validate && npm run compile && mocha --exit"
   },
   "dependencies": {
     "express": "^4.16.2",
