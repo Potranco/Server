@@ -1,5 +1,34 @@
 import React from 'react'
-import ReactDOMServer from 'react-dom/server'
 import MyComponent from './MyComponent'
+import { Route, Switch, NavLink } from 'react-router-dom'
 
-export default ReactDOMServer.renderToString(<MyComponent />)
+const Home = () => <h1>Home</h1>
+const About = () => <h1>About</h1>
+const Contact = () => <h1>Contact</h1>
+
+const Links = () => (
+  <nav>
+    <NavLink exact to='/'>Home</NavLink>
+    <NavLink to='/about'>About</NavLink>
+    <NavLink to='/contact'>Contact</NavLink>
+    <NavLink to='/component'>Component</NavLink>
+  </nav>
+)
+
+const MyComponentCompiled = () => <MyComponent />
+
+const App = (props) => {
+  return (
+    <div>
+      <Links />
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/about' component={About} />
+        <Route path='/contact' component={Contact} />
+        <Route path='/component' component={MyComponentCompiled} />
+      </Switch>
+    </div>
+  )
+}
+
+export default App

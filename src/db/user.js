@@ -1,35 +1,39 @@
-import { MongoClient } from 'mongodb'
-import config from './config.js'
+import user from './models/user.js'
 
-function connect (configDB) {
-  let {host, port} = configDB
-  let url = host + ':' + port
-
-  return (new Promise((resolve, reject) => {
-    MongoClient.connect(url, function (error, client) {
-      if (error) {
-        console.log('Mongo Network Error!')
-        reject(error)
-      } else resolve(client)
+export default class User {
+  find (req, res, next) {
+    user.find({active: true}, function (err, users) {
+      if (err) return next(err)
+      res.json(users)
     })
-  }))
+  }
+
+  findById (req, res, next) {
+    let userId = req.params.id
+    user.findById(userId, function (err, user) {
+      if (err) return next(err)
+      res.json(user)
+    })
+  }
+
+  create (req, res, next) {
+    user.create(req.body, function (err, post) {
+      if (err) return next(err)
+      res.json(post)
+    })
+  }
+
+  update (req, res, next) {
+    user.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+      if (err) return next(err)
+      res.json(post)
+    })
+  }
+
+  delete (req, res, next) {
+    user.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+      if (err) return next(err)
+      res.json(post)
+    })
+  }
 }
-
-function getUser (userId) {
-  return new Promise((resolve, reject) => {
-    connect(config)
-      .then((clientDB) => {
-        let DB = clientDB.db(config.dbName)
-        let users = DB.collection('users')
-
-        users.find({userId: userId}).toArray((error, user) => {
-          if (error) reject(error)
-          if (user.length) resolve(user)
-          else reject(error)
-        })
-      })
-      .catch(reject)
-  })
-}
-
-export {getUser}

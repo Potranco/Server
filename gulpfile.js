@@ -7,7 +7,6 @@ var source = require('vinyl-source-stream');
 var babelify = require('babelify');
 var browserify = require('browserify');
 
-
 var path = {
   src: './src',
   dest: './dist'
@@ -25,6 +24,16 @@ function runCommand(command) {
 
 gulp.task('dev', () => gulp.start('default'));
 
+gulp.task('build-main', function () {
+    return browserify({
+      entries: [`${path.src}/components/main.js`],
+      transform: [babelify]
+    }).bundle()
+      .pipe(source('main.js'))
+      .pipe(buffer())
+      .pipe(gulp.dest(`${path.src}/public`))
+})
+
 gulp.task('build-server', function () {
   gulp.src(`${path.src}/**/*.js`)
     .pipe(babel({ presets: ['es2015']} ))
@@ -34,9 +43,9 @@ gulp.task('build-server', function () {
 gulp.task('watch', function () {
     gulp.watch([
       `${path.src}/**/*.js`,
-    ], ['build-server']);
+    ], ['build-server','build-main']);
 });
 
 gulp.task('default', function () {
-  gulp.start('build-server');
+  gulp.start('build-server','build-main');
 });

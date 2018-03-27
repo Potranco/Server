@@ -1,12 +1,26 @@
-import character from './character.js'
-import user from './user.js'
+import api from './api.js'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import StaticRouter from 'react-router/StaticRouter'
+import App from '../components/App.js'
 import template from '../templates/index.js'
 
 function routers (app) {
-  app.use('/', character)
-  app.use('/', user)
-  app.get('/', function (req, res) {
-    res.status(200).send(template())
+  app.use('/api/', api)
+  app.get('*', function (req, res) {
+    const context = {}
+    const AppServerRender = ReactDOMServer.renderToString(
+      <StaticRouter location={req.url} context={context} >
+        <App />
+      </StaticRouter>
+    )
+
+    if (context.url) {
+      res.writeHead(301, {Location: context.url})
+    } else {
+      const html = template(AppServerRender, 'App render!!')
+      res.send(html)
+    }
   })
 }
 
