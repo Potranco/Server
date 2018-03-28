@@ -1,0 +1,110 @@
+// ============
+// COMMON
+// ============
+
+@import "normalize";
+@import "variables";
+@import "mixins";
+
+// JS breakpoints
+.css_view{
+  // Mobile
+  content: 'small';
+
+  // Tablet
+  @include breakpoint($mediumResolution){
+    content: 'medium';
+  }
+
+  // Desktop
+  @include breakpoint($bigResolution){
+    content: 'big';
+  }
+}
+
+body {
+    margin: 0px 0px 0px 0px;
+    background-color: #ebeced;
+    color:#444;
+    -webkit-text-stroke: 1px transparent;
+    height:100%;
+    font-family: $primaryFont;
+    font-size:$fontSizeS;
+}
+
+html {
+  height:100%;
+}
+
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration:none;
+}
+label {font-size:$fontSizeS;position:relative;display:block;
+  &._InputError {
+    ._MsgError {
+      height:20px;
+      margin-top:-10px;
+    }
+  }
+   ._MsgError {
+      width:150px;padding:3px;border-radius:0px 0px 3px 3px;
+      background-color: #d14836;
+      background-image: -webkit-linear-gradient(top,#dd4b39,#d14836);
+      background-image: linear-gradient(top,#dd4b39,#d14836);
+      color: #fff;
+      margin:-20px 0px 10px 5px;
+      -webkit-transition: height 300ms;
+      transition: height 300ms;
+      display:block;
+      height:0px;
+    }
+
+}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+    font-size:$fontSizeS;margin:0px auto 10px;padding:8px 5px;border:1px solid #ccc;outline: none;border-radius:3px;
+    &:hover {border-color:#999;}
+
+}
+
+
+// ========================
+// GENERIC CSS TO TAGS
+// ========================
+
+h1 {
+  font-size: $fontSizeXL;
+}
+
+p {
+
+}
+
+
+// Fonts
+
+@font-face {
+  font-family: 'Open Sans Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Open Sans Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
