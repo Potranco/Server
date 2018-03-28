@@ -10,7 +10,7 @@ function routers (app) {
   app.get('*', function (req, res) {
     const context = {}
     const AppServerRender = ReactDOMServer.renderToString(
-      <StaticRouter location={req.url} context={context} >
+      <StaticRouter location={req.url} context={context}>
         <App />
       </StaticRouter>
     )

@@ -5,9 +5,7 @@ export default (body) => `<!DOCTYPE html>
   <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 <body class="ActiveMenu">
-  <div id="app">
-    ${body}
-  </div>
+  <div id="app">${body}</div>
 
   <!-- to create components -->
     <div class="SideBar">
