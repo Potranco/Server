@@ -51,9 +51,9 @@ gulp.task('build-server', function () {
 })
 
 gulp.task('watch', function () {
-    gulp.watch([
-      `${path.src}/**/*.js+(!${path.src}/public/*)`,
-    ], ['build-server','build-main']);
+  gulp.watch([`${path.src}/sass/**/*.scss`], ['styles']);
+  gulp.watch([`${path.src}/components/**/*.js`], ['build-main']);
+  gulp.watch([`${path.src}/**/*.js`], ['build-server']);
 });
 
 gulp.task('default', function () {
