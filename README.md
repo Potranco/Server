@@ -14,7 +14,7 @@ server: http://localhost:3000
 
 # Next steps
 
-- Create sidebar menu in react components
+- Remove (sidebar && header).html => react components
 - Add control user (create, update & delete) with use api/user
 - Refactor test server
 - Refactor class User server (consume mongodb)
