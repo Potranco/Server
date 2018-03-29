@@ -1,6 +1,8 @@
 import React from 'react'
-import MyComponent from './MyComponent'
 import { Route, Switch, NavLink } from 'react-router-dom'
+import SideBar from './sidebar.js'
+import Header from './header.js'
+import MyComponent from './MyComponent'
 
 const Home = () => <h1>Home</h1>
 const About = () => <h1>About</h1>
@@ -20,6 +22,10 @@ const MyComponentCompiled = () => <MyComponent />
 const App = (props) => {
   return (
     <div>
+      <SideBar />
+      <div className='wrap Content'>
+        <Header />
+      </div>
       <Links />
       <Switch>
         <Route exact path='/' component={Home} />
