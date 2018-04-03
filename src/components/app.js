@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch, NavLink } from 'react-router-dom'
-import SideBar from './sidebar.js'
+import SideBar from './sidebar/index.js'
 import Header from './header.js'
 import MyComponent from './MyComponent'
 
@@ -20,9 +20,15 @@ const Links = () => (
 const MyComponentCompiled = () => <MyComponent />
 
 const App = (props) => {
+  let showUser = {
+    name: 'test',
+    avatar: 'https://secure.gravatar.com/avatar/b2220febee717567cd9edb1b7aacf0a2?s=50&d=https%3A%2F%2Fstatic.canva.com%2Fimages%2Fdefault_avatar_50.png',
+    email: 'test@project.d20',
+    url: '/user/0/'
+  }
   return (
     <div>
-      <SideBar />
+      <SideBar user={showUser} />
       <div className='wrap Content'>
         <Header />
       </div>

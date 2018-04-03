@@ -21,14 +21,11 @@ $boldFont: 700;
 
 
 $color1:#443f3b;
-$color2:#fff;   // not used
-$color3:#ffffff;
+$color2:#ebeced;
+$color3:#3f4652;
 
-$primaryColor:$color1;
-$secondaryColor:$color2; // not used
+$primaryColor: $color1;
 
-
-
-
-
-
+// Backgrounds:
+$background: $color3;
+$backgroundSidebar: $color3;
