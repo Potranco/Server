@@ -1,15 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const ShowUser = (props) => {
   let {name, avatar, email, url} = props.user
 
   return (
-    <div className='ShowUser'>
-      <div className='Avatar'>
-        <a href={url}><img src={avatar} /></a>
-      </div>
+    <div className='CurrentUser ShowUser'>
+      <NavLink to={url}><div className='Avatar' style={{backgroundImage: `url(${avatar})`}} /></NavLink>
       <p>
-        <a href={url}>{name}</a>
+        <NavLink to={url}>{name}</NavLink>
         <span>{email}</span>
       </p>
     </div>

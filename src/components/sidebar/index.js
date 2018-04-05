@@ -5,14 +5,8 @@ class SideBar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      display: true,
-      className: 'SideBar',
-      user: {
-        name: 'Invitado',
-        avatar: 'default',
-        email: 'inviatado@project.d20',
-        url: ''
-      }
+      display: props.display,
+      user: props.user
     }
     this.changeDisplaySideBar = this.changeDisplaySideBar.bind(this)
   }
@@ -28,15 +22,16 @@ class SideBar extends React.Component {
     /* TODO: see change feature in app compoment to move all website */
     let {display} = this.state
     this.setState({
-      display: !display,
-      className: (!display) ? 'SideBar' : 'SideBar Desactive'
+      display: !display
     })
   }
 
   render () {
     let {user} = this.state
+    let className = (this.state.display) ? 'SideBar' : 'SideBar Desactive'
+
     return (
-      <div className={this.state.className}>
+      <div className={className}>
         <div className='ChangeDisplay' onClick={this.changeDisplaySideBar} />
         <ShowUser user={user} />
         <div className='Dialog ShowUserMenu'>

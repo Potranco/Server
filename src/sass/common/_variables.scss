@@ -20,12 +20,14 @@ $regularFont: 400;
 $boldFont: 700;
 
 
-$color1:#443f3b;
-$color2:#ebeced;
-$color3:#3f4652;
+$color1: #443f3b;
+$color2: #ebeced;
+$color3: #3f4652;
+$color4: #fff;
 
 $primaryColor: $color1;
-
-// Backgrounds:
 $background: $color3;
-$backgroundSidebar: $color3;
+
+// Sidebar:
+$SidebarBackground: $color3;
+$SidebarTextColor: $color4;
