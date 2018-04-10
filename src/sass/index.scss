@@ -1,8 +1,14 @@
 @import "common/common";
 @import "components/forms";
 
-body.ActiveMenu {
-  padding-left:250px;
+body{
+  transition: padding-left 0.5s;
+  &.ActiveSideBar {
+    padding-left:250px;
+    .SideBar {left:0px;
+      .ChangeDisplay {/* Icon open */}
+    }
+  }
 }
 
 .wrap{
@@ -23,13 +29,29 @@ body.ActiveMenu {
 }
 
 .SideBar {
-  color: #fff; position: fixed;padding: 20px;left: 0;width: 250px;top: 0;height: 100%;background: #3f4652;z-index: 1;box-sizing: border-box;
+  position: fixed;
+  left: -250px;
+  top: 0px;
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  background: $SidebarBackground;
+  color: $SidebarTextColor;
+  z-index: 1;
+  transition: left 0.500s;
+
   a {color:#fff}
 
+  .ChangeDisplay {width:40px;height:40px;background:$SidebarBackground;position:absolute;right:-35px;top:10px;border-radius: 5px;cursor: pointer;
+    /* Icon Close */
+  }
+
   .ShowUser {
-    width:100%;line-height:120%;height:50px;display:flex;justify-content:center;align-items:center;margin-bottom:20px;
-    .Avatar {background-size:cover;border-radius:25px;width:70px;height:50px;float:left;margin-right:20px;background-position:center;}
-    a {font-weight:bold;width:180px;font-size:16px;}
+    width:100%;line-height:120%;display:flex;align-items:center;margin-bottom:20px;
+    .Avatar {border-radius:25px;min-width:40px;height:40px;background-position:center;background-size:cover;}
+    p {padding-left: 20px;width:170px;line-height:20px}
+    a {font-size:16px;display:block}
+    span {opacity:0.5; width:180px}
   }
 
   .ShowUserMenu {display:none}
