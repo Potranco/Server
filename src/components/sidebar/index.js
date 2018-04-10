@@ -14,8 +14,8 @@ class SideBar extends React.Component {
     this.setState({user: user})
   }
   changedisplay () {
-    let {body} = this.state.display
-    body.classList.toggle('ActiveSideBar')
+    let {display} = this.state
+    display.body.classList.toggle('ActiveSideBar')
   }
 
   componentWillMount () {
