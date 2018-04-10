@@ -28,7 +28,7 @@ const App = (props) => {
   }
   return (
     <div>
-      <SideBar display user={showUser} />
+      <SideBar display={props.sidebar} user={showUser} />
       <div className='wrap Content'>
         <Header />
       </div>

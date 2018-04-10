@@ -5,34 +5,30 @@ class SideBar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      display: props.display,
-      user: props.user
+      user: props.user,
+      display: props.display
     }
-    this.changeDisplaySideBar = this.changeDisplaySideBar.bind(this)
   }
 
   changeUser (user) {
     this.setState({user: user})
   }
-  componentWithMount () {
-    if (this.props.user) this.changeUser(this.props.user)
+  changedisplay () {
+    let {body} = this.state.display
+    body.classList.toggle('ActiveSideBar')
   }
 
-  changeDisplaySideBar () {
-    /* TODO: see change feature in app compoment to move all website */
+  componentWillMount () {
     let {display} = this.state
-    this.setState({
-      display: !display
-    })
+    if (display && !display.activeSideBar && display.body) display.body.classList.remove('ActiveSideBar')
   }
 
   render () {
     let {user} = this.state
-    let className = (this.state.display) ? 'SideBar' : 'SideBar Desactive'
 
     return (
-      <div className={className}>
-        <div className='ChangeDisplay' onClick={this.changeDisplaySideBar} />
+      <div className='SideBar'>
+        <div className='ChangeDisplay' onClick={this.changedisplay.bind(this)} />
         <ShowUser user={user} />
         <div className='Dialog ShowUserMenu'>
           <a href=''>Ajustes</a>

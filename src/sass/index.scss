@@ -1,8 +1,14 @@
 @import "common/common";
 @import "components/forms";
 
-body.ActiveMenu {
-  padding-left:250px;
+body{
+  transition: padding-left 0.5s;
+  &.ActiveSideBar {
+    padding-left:250px;
+    .SideBar {left:0px;
+      .ChangeDisplay {/* Icon open */}
+    }
+  }
 }
 
 .wrap{
@@ -24,7 +30,7 @@ body.ActiveMenu {
 
 .SideBar {
   position: fixed;
-  left: 0px;
+  left: -250px;
   top: 0px;
   width: 250px;
   height: 100%;
@@ -39,10 +45,7 @@ body.ActiveMenu {
   .ChangeDisplay {width:40px;height:40px;background:$SidebarBackground;position:absolute;right:-35px;top:10px;border-radius: 5px;cursor: pointer;
     /* Icon Close */
   }
-  /* TODO: Change feature in app to move all elements of website */
-  &.Desactive {left:-250px;
-    .ChangeDisplay {/* Icon open */}
-  }
+
   .ShowUser {
     width:100%;line-height:120%;display:flex;align-items:center;margin-bottom:20px;
     .Avatar {border-radius:25px;min-width:40px;height:40px;background-position:center;background-size:cover;}
