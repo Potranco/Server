@@ -28,7 +28,10 @@ const App = (props) => {
   }
   return (
     <div>
-      <SideBar display={props.sidebar} user={showUser} />
+      <SideBar
+        activeSideBar={props.activeSideBar}
+        body={props.body}
+        user={showUser} />
       <div className='wrap Content'>
         <Header />
       </div>

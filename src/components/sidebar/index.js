@@ -6,7 +6,8 @@ class SideBar extends React.Component {
     super(props)
     this.state = {
       user: props.user,
-      display: props.display
+      body: props.body,
+      activeSideBar: props.activeSideBar
     }
   }
 
@@ -14,13 +15,13 @@ class SideBar extends React.Component {
     this.setState({user: user})
   }
   changedisplay () {
-    let {display} = this.state
-    display.body.classList.toggle('ActiveSideBar')
+    let {body} = this.state
+    body.classList.toggle('ActiveSideBar')
   }
 
   componentWillMount () {
-    let {display} = this.state
-    if (display && !display.activeSideBar && display.body) display.body.classList.remove('ActiveSideBar')
+    let {activeSideBar, body} = this.state
+    if (body && !activeSideBar) body.classList.remove('ActiveSideBar')
   }
 
   render () {

@@ -4,12 +4,10 @@ import App from './app'
 import { BrowserRouter } from 'react-router-dom'
 import isMobile from './isMobile/index.js'
 
-let sidebar = {
-  activeSideBar: !isMobile(),
-  body: document.body
-}
-
 ReactDOM.hydrate(
   <BrowserRouter>
-    <App sidebar={sidebar} />
+    <App
+      activeSideBar={!isMobile()}
+      body={document.body}
+    />
   </BrowserRouter>, document.getElementById('app'))
