@@ -4,12 +4,22 @@ const userConfig = {
 }
 
 class User {
-  constructor (userId = '') {
+  constructor (userId = false) {
     this.id = userId
     this.name = 'Invitado'
     this.email = ''
-    this.image = ''
-    this.load()
+    this.avatar = ''
+    this.url = ''
+    if (this.id) this.load()
+  }
+
+  set (user) {
+    let {id, name, email, avatar} = user
+    this.id = id || this.id
+    this.id = name || this.name
+    this.id = email || this.email
+    this.id = avatar || this.avatar
+    return this
   }
 
   load () {

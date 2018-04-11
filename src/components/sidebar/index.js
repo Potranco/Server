@@ -21,7 +21,7 @@ class SideBar extends React.Component {
   }
 
   goToUser () {
-    console.log('Go to user')
+    console.log(this.props.user)
   }
 
   componentWillMount () {
