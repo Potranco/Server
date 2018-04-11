@@ -14,9 +14,14 @@ class SideBar extends React.Component {
   changeUser (user) {
     this.setState({user: user})
   }
+
   changedisplay () {
     let {body} = this.state
     body.classList.toggle('ActiveSideBar')
+  }
+
+  goToUser () {
+    console.log('Go to user')
   }
 
   componentWillMount () {
@@ -35,6 +40,7 @@ class SideBar extends React.Component {
           <a href=''>Ajustes</a>
           <a href=''>Logout</a>
         </div>
+        <button onClick={this.goToUser.bind(this)}>Registrarse</button>
         <ul className='MenuApp'>
           <li><a href=''>Personajes</a></li>
           <li><a href=''>Campañas</a></li>

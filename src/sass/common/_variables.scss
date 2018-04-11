@@ -24,9 +24,18 @@ $color1: #443f3b;
 $color2: #ebeced;
 $color3: #3f4652;
 $color4: #fff;
+$color5: rgba(77, 144, 254, 0.80);
+$color5_hover: rgba(77, 144, 254, 1);
+$color6: #3079ed;
 
 $primaryColor: $color1;
 $background: $color3;
+
+// Button action
+$buttonBack: $color5;
+$buttonBackHover: $color5_hover;
+$buttonBorder: $color6;
+$buttonText: $color4;
 
 // Sidebar:
 $SidebarBackground: $color3;
