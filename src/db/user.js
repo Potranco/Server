@@ -19,12 +19,11 @@ export default class User {
   create (req, res, next) {
     if (!req.body) {
       return res.status(400).send({
-        message: 'User can not be empty'
+        message: 'Body can not be empty'
       })
     }
     UserModel.create(req.body, function (err, post) {
       if (err) return next(err)
-      console.log('Create user ok!')
       return res.json(post)
     })
   }
@@ -32,12 +31,11 @@ export default class User {
   update (req, res, next) {
     if (!req.body) {
       return res.status(400).send({
-        message: 'User can not be empty'
+        message: 'Body can not be empty'
       })
     }
     UserModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
       if (err) return next(err)
-      console.log('Update user ok!')
       return res.json(post)
     })
   }
