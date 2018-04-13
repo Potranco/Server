@@ -9,6 +9,7 @@ class User {
     this.name = 'Invitado'
     this.email = ''
     this.avatar = ''
+    this.active = true
     this.url = ''
     if (this.id) this.load()
   }
@@ -25,21 +26,35 @@ class User {
   }
 
   save () {
+    let data = {
+      name: this.name,
+      email: this.email,
+      avatar: this.avatar,
+      active: this.active
+    }
+    if (this.id) data._id = this.id
     let header = {
-      method: 'POST'
+      method: '',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     }
     const url = this.id ? userConfig.host + this.id : userConfig.host
+    header.method = this.id ? 'PUT' : 'POST'
     return fetch(url, header)
       .then(function (response) {
-        if (response.ok) {
-          let data = response.json()
-          this.id = data.id
-          this.name = data.name
-          this.email = data.email
-          return true
-        }
-        return false
+        return response.ok && response.json()
       })
+      .then(function (data) {
+        if (!data) return false
+        this.id = data._id
+        this.name = data.name
+        this.email = data.email
+        this.active = data.active
+        return true
+      }.bind(this))
       .catch(function (error) {
         console.log('User.save error: ', error)
         return false

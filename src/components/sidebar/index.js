@@ -12,6 +12,9 @@ class SideBar extends React.Component {
       idLoginActive: false
     }
     this.activelogin = this.activeLogin.bind(this)
+    this.displayUser = this.displayUser.bind(this)
+    this.goToUser = this.goToUser.bind(this)
+    this.changedisplay = this.changedisplay.bind(this)
   }
 
   changeUser (user) {
@@ -25,7 +28,7 @@ class SideBar extends React.Component {
 
   goToUser () {
     let user = this.state
-    if (user.id) console.log('this.displayUser()')
+    if (user.id) this.displayUser()
     else this.activelogin()
   }
 
@@ -34,6 +37,7 @@ class SideBar extends React.Component {
   }
 
   activeLogin () {
+    console.log(this)
     this.setState({idLoginActive: !this.state.idLoginActive})
   }
 
@@ -47,19 +51,19 @@ class SideBar extends React.Component {
 
     return (
       <div className='SideBar'>
-        <a className='ChangeDisplay' onClick={this.changedisplay.bind(this)} />
+        <a className='ChangeDisplay' onClick={this.changedisplay} />
         <ShowUser user={user} />
         <div className='Dialog ShowUserMenu'>
           <a href=''>Ajustes</a>
           <a href=''>Logout</a>
         </div>
-        <button onClick={this.goToUser.bind(this)}>Registrarse</button>
+        <button onClick={this.goToUser}>Registrarse</button>
         <ul className='MenuApp'>
           <li><a href=''>Personajes</a></li>
           <li><a href=''>Campañas</a></li>
           <li><a href=''>Biblioteca</a></li>
         </ul>
-        { idLoginActive && <Login user={user} close={this.activeLogin} /> }
+        { idLoginActive && <Login user={user} close={this.activeLogin.bind(this)} /> }
       </div>
     )
   }
