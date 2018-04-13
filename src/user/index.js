@@ -13,15 +13,6 @@ class User {
     if (this.id) this.load()
   }
 
-  set (user) {
-    let {id, name, email, avatar} = user
-    this.id = id || this.id
-    this.id = name || this.name
-    this.id = email || this.email
-    this.id = avatar || this.avatar
-    return this
-  }
-
   load () {
     let header = {
       method: 'GET'
@@ -38,9 +29,20 @@ class User {
       method: 'POST'
     }
     const url = this.id ? userConfig.host + this.id : userConfig.host
-    fetch(url, header)
+    return fetch(url, header)
       .then(function (response) {
-        console.log(response)
+        if (response.ok) {
+          let data = response.json()
+          this.id = data.id
+          this.name = data.name
+          this.email = data.email
+          return true
+        }
+        return false
+      })
+      .catch(function (error) {
+        console.log('User.save error: ', error)
+        return false
       })
   }
 

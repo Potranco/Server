@@ -1,0 +1,6 @@
+@import "../common/variables";
+@import "../common/mixins";
+
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+  color: $text1Color;
+}

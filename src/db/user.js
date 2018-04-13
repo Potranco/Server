@@ -18,8 +18,13 @@ export default class User {
 
   create (req, res, next) {
     user.create(req.body, function (err, post) {
+      if (!req.body.content) {
+        return res.status(400).send({
+          message: 'User can not be empty'
+        })
+      }
       if (err) return next(err)
-      res.json(post)
+      return res.json(post)
     })
   }
 

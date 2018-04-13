@@ -19,8 +19,8 @@ mongoose.connect(dbUrl, function (error, res) {
     console.log('ERROR: connecting to Databae projectD20.')
     console.log(error)
   }
-
   server.listen(port, function () {
+    console.log('Connect to DB', res.name, 'on', res.host + ':' + res.port)
     console.log('Project D20 Server in http://localhost:3000')
     console.log('CTRL-C to exit!')
   })

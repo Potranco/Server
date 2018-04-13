@@ -27,9 +27,12 @@ $color4: #fff;
 $color5: rgba(77, 144, 254, 0.80);
 $color5_hover: rgba(77, 144, 254, 1);
 $color6: #3079ed;
+$color7: #333333;
 
 $primaryColor: $color1;
 $background: $color3;
+$text1Color: $color7;
+$text2Color: $color4;
 
 // Button action
 $buttonBack: $color5;
@@ -39,4 +42,4 @@ $buttonText: $color4;
 
 // Sidebar:
 $SidebarBackground: $color3;
-$SidebarTextColor: $color4;
+$SidebarTextColor: $text2Color;
