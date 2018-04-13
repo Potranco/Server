@@ -3,6 +3,11 @@ import UserModel from './models/user.js'
 export default class DBMethods {
   constructor (model) {
     this.model = this.generateModel(model)
+    this.find = this.find.bind(this)
+    this.findById = this.findById.bind(this)
+    this.update = this.update.bind(this)
+    this.create = this.create.bind(this)
+    this.delete = this.delete.bind(this)
   }
 
   generateModel (model) {
@@ -13,7 +18,7 @@ export default class DBMethods {
   }
 
   find (req, res, next) {
-    UserModel.find({active: true}, function (err, users) {
+    this.model.find({active: true}, function (err, users) {
       if (err) return next(err)
       res.json(users)
     })
@@ -21,7 +26,7 @@ export default class DBMethods {
 
   findById (req, res, next) {
     let userId = req.params.id
-    UserModel.findById(userId, function (err, user) {
+    this.model.findById(userId, function (err, user) {
       if (err) return next(err)
       res.json(user)
     })
@@ -33,7 +38,7 @@ export default class DBMethods {
         message: 'Body can not be empty'
       })
     }
-    UserModel.create(req.body, function (err, post) {
+    this.model.create(req.body, function (err, post) {
       if (err) return next(err)
       return res.json(post)
     })
@@ -45,14 +50,14 @@ export default class DBMethods {
         message: 'Body can not be empty'
       })
     }
-    UserModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    this.model.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
       if (err) return next(err)
       return res.json(post)
     })
   }
 
   delete (req, res, next) {
-    UserModel.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    this.model.findByIdAndRemove(req.params.id, req.body, function (err, post) {
       if (err) return next(err)
       res.json(post)
     })
