@@ -1,6 +1,17 @@
 import UserModel from './models/user.js'
 
-export default class User {
+export default class DBMethods {
+  constructor (model) {
+    this.model = this.generateModel(model)
+  }
+
+  generateModel (model) {
+    switch (model) {
+      case 'user': return UserModel
+    }
+    return false
+  }
+
   find (req, res, next) {
     UserModel.find({active: true}, function (err, users) {
       if (err) return next(err)
