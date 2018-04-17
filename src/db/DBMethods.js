@@ -38,9 +38,17 @@ export default class DBMethods {
         message: 'Body can not be empty'
       })
     }
-    this.model.create(req.body, function (err, post) {
+
+    this.model.find({email: req.body.email}, (err, user) => {
       if (err) return next(err)
-      return res.json(post)
+      if (!user.length) {
+        this.model.create(req.body, function (err, newUser) {
+          if (err) return next(err)
+          return res.json(newUser)
+        })
+      } else {
+        res.json(user[0])
+      }
     })
   }
 

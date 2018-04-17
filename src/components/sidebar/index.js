@@ -37,7 +37,6 @@ class SideBar extends React.Component {
   }
 
   activeLogin () {
-    console.log(this)
     this.setState({idLoginActive: !this.state.idLoginActive})
   }
 

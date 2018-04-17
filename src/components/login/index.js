@@ -19,6 +19,8 @@ class Login extends React.Component {
 
   activeUser () {
     let {user, close} = this.props
+    user.email = this.state.email
+    user.password = this.state.password
     user.save()
       .then((response) => {
         if (response) close()
