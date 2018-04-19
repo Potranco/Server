@@ -14,9 +14,8 @@ server: http://localhost:3000
 
 # Next steps
 
-- Add api/user in app react
-  - Create User
-  - Update User
+- Design login/registry
+- Design User page
   - delete User
 - Refactor test server
 - Refactor class User server (consume mongodb)
