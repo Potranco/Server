@@ -46,7 +46,10 @@ gulp.task('styles', ['build-server'], function() {
 
 gulp.task('build-server', function () {
   gulp.src(`${path.src}/**/*.js`)
-    .pipe(babel({ presets: ['es2015']} ))
+    .pipe(babel({
+      presets: ['es2015'],
+      plugins: ['transform-es2015-arrow-functions']
+    }))
     .pipe(gulp.dest(path.dest));
 })
 

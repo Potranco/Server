@@ -1,33 +1,25 @@
 import fetch from 'isomorphic-fetch'
-const userConfig = {
-  host: 'http://localhost:3000/api/user/'
-}
+import saveUser from './save.js'
+import config from './config.js'
 
 class User {
-  constructor (userId = '') {
+  constructor (userId = false) {
     this.id = userId
     this.name = 'Invitado'
     this.email = ''
-    this.image = ''
-    this.load()
+    this.avatar = ''
+    this.active = true
+    this.url = ''
+    this.password = ''
+    this.save = saveUser
+    if (this.id) this.load()
   }
 
   load () {
     let header = {
       method: 'GET'
     }
-    const url = userConfig.host + this.id
-    fetch(url, header)
-      .then(function (response) {
-        console.log(response)
-      })
-  }
-
-  save () {
-    let header = {
-      method: 'POST'
-    }
-    const url = this.id ? userConfig.host + this.id : userConfig.host
+    const url = config.host + this.id
     fetch(url, header)
       .then(function (response) {
         console.log(response)
@@ -38,7 +30,7 @@ class User {
     let header = {
       method: 'DELETE'
     }
-    const url = userConfig.host + this.id
+    const url = config.host + this.id
     fetch(url, header)
       .then(function (response) {
         console.log(response)
