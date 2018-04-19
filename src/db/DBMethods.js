@@ -1,20 +1,14 @@
-import UserModel from './models/user.js'
+/* This class is not functional need a model, this content is generic functions */
+/* Comment dedicated to Eric ;) */
 
 export default class DBMethods {
-  constructor (model) {
-    this.model = this.generateModel(model)
+  constructor () {
+    this.model = false
     this.find = this.find.bind(this)
     this.findById = this.findById.bind(this)
     this.update = this.update.bind(this)
     this.create = this.create.bind(this)
     this.delete = this.delete.bind(this)
-  }
-
-  generateModel (model) {
-    switch (model) {
-      case 'user': return UserModel
-    }
-    return false
   }
 
   find (req, res, next) {
@@ -38,18 +32,10 @@ export default class DBMethods {
         message: 'Body can not be empty'
       })
     }
-    let password = req.body.password
-    this.model.find({email: req.body.email}, (err, user) => {
+
+    this.model.create(req.body, function (err, newUser) {
       if (err) return next(err)
-      if (!user.length) {
-        this.model.create(req.body, function (err, newUser) {
-          if (err) return next(err)
-          return res.json(newUser)
-        })
-      } else {
-        if (password === user[0].password) res.json(user[0])
-        res.json(false)
-      }
+      return res.json(newUser)
     })
   }
 

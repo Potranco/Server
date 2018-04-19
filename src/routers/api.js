@@ -1,8 +1,8 @@
 import express from 'express'
-import DBMethods from '../db/DBMethods.js'
+import User from '../db/user.js'
 
 const router = express.Router()
-const user = new DBMethods('user')
+const user = new User('user')
 
 router.get('/user', user.find)
 router.get('/user/:id', user.findById)
