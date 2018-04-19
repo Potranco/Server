@@ -38,7 +38,7 @@ export default class DBMethods {
         message: 'Body can not be empty'
       })
     }
-
+    let password = req.body.password
     this.model.find({email: req.body.email}, (err, user) => {
       if (err) return next(err)
       if (!user.length) {
@@ -47,7 +47,8 @@ export default class DBMethods {
           return res.json(newUser)
         })
       } else {
-        res.json(user[0])
+        if (password === user[0].password) res.json(user[0])
+        res.json(false)
       }
     })
   }

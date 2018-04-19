@@ -28,7 +28,6 @@ const save = function () {
       return response.ok && response.json()
     })
     .then(function (data) {
-      console.log(data)
       if (!data) return false
       this.id = data._id
       this.name = data.name

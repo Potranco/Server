@@ -25,7 +25,7 @@ class Login extends React.Component {
       .then((response) => {
         if (response) close()
         else {
-          this.setState({error: 'No se pudo acceder a la base de datos'})
+          this.setState({error: 'Los datos de registro/login son erroneos'})
         }
       })
       .catch(function (error) {
