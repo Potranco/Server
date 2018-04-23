@@ -43,11 +43,22 @@ class Login extends React.Component {
   render () {
     let {error} = this.state
     return (
-      <Popup title='Acceso / Registro' onClose={() => false}>
+      <Popup title='Acceso / Registro' onClose={this.props.close}>
         <form action='#' className='Login'>
           {!!error && <div className='ErrorMessage'>{error}</div>}
-          <Input type='email' label='email' name='email' onChange={this.handleChangeEmail.bind(this)} />
-          <Input type='password' label='contraseña' name='email' onChange={this.handleChangePassword.bind(this)} />
+          <Input
+            type='email'
+            required
+            label='email'
+            name='email'
+            placeholder='ejemplo@email.com'
+            onChange={this.handleChangeEmail.bind(this)} />
+          <Input
+            type='password'
+            required
+            label='contraseña'
+            name='email'
+            onChange={this.handleChangePassword.bind(this)} />
           <button type='button' onClick={this.activeUser.bind(this)}>Aceptar</button>
         </form>
       </Popup>

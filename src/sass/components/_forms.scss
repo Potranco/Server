@@ -5,4 +5,9 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
   color: $text1Color;
 }
 
+.InputError {
+  label {color:#f00}
+  input {border-color:#f00}
+}
+
 .ErrorMessage {}
