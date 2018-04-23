@@ -1,8 +1,8 @@
 import React from 'react'
 import Input from '../forms/input.js'
+import Popup from '../popup/index.js'
 
-/* TODO: WrapFixed change in component popup */
-/* TODO: add loading */
+/* TODO: add title & close in popup Component */
 /* TODO: add design errors */
 /* TODO: add control in inputs values */
 /* TODO: Think forms constructor */
@@ -25,7 +25,7 @@ class Login extends React.Component {
       .then((response) => {
         if (response) close()
         else {
-          this.setState({error: 'Los datos de registro/login son erroneos'})
+          this.setState({error: 'Los datos de login/registro son erroneos'})
         }
       })
       .catch(function (error) {
@@ -43,17 +43,14 @@ class Login extends React.Component {
   render () {
     let {error} = this.state
     return (
-      <div className='WrapFixed'>
-        <div className='BackgroundFixed' />
-        <div className='Login'>
-          {!!error && <div>{error}</div>}
-          <label>email</label>
-          <Input type='email' name='email' onChange={this.handleChangeEmail.bind(this)} />
-          <label>contraseña</label>
-          <Input type='password' name='email' onChange={this.handleChangePassword.bind(this)} />
-          <button onClick={this.activeUser.bind(this)}>Aceptar</button>
-        </div>
-      </div>
+      <Popup title='Acceso / Registro' onClose={() => false}>
+        <form action='#' className='Login'>
+          {!!error && <div className='ErrorMessage'>{error}</div>}
+          <Input type='email' label='email' name='email' onChange={this.handleChangeEmail.bind(this)} />
+          <Input type='password' label='contraseña' name='email' onChange={this.handleChangePassword.bind(this)} />
+          <button type='button' onClick={this.activeUser.bind(this)}>Aceptar</button>
+        </form>
+      </Popup>
     )
   }
 }

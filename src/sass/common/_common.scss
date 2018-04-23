@@ -47,6 +47,7 @@ a {
     text-decoration:none;
 }
 label {font-size:$fontSizeS;position:relative;display:block;
+  color:$text1Color;
   &._InputError {
     ._MsgError {
       height:20px;
