@@ -40,7 +40,6 @@ class Input extends React.Component {
           value={this.state.value}
           placeholder={placeholder}
           onChange={this.handleChange}
-          required={this.state.required}
           onBlur={this.handleOnBlur} />
       </div>
     )

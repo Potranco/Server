@@ -1,6 +1,7 @@
 import React from 'react'
 import Input from '../forms/input.js'
 import Popup from '../popup/index.js'
+import {isEmail} from '../utils/index.js'
 
 /* TODO: add title & close in popup Component */
 /* TODO: add design errors */
@@ -20,22 +21,21 @@ class Login extends React.Component {
   activeUser () {
     let {user, close} = this.props
     let {email, password} = this.state
-    if (email && password) {
-      user.email = email
-      user.password = password
-      user.save()
-        .then((response) => {
-          if (response) close()
-          else {
-            this.setState({error: 'Los datos de registro/login son erroneos'})
-          }
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    } else {
-      this.setState({error: 'Datos incompletos'})
-    }
+    if (!email && !password) return this.setState({error: 'Datos incompletos'})
+    if (!isEmail(email)) return this.setState({error: 'Email incorrecto'})
+
+    user.email = email
+    user.password = password
+    user.save()
+      .then((response) => {
+        if (response) return close()
+        else {
+          this.setState({error: 'Los datos de registro/login son erroneos'})
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 
   handleChangeEmail (value) {
