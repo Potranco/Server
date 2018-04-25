@@ -7,9 +7,9 @@ let describe = mocha.describe
 let it = mocha.it
 let expect = chai.expect
 chai.use(chaiHttp)
-let urlServer = config.url + ':' + config.port
+let urlServer = config.paths.host
 
-describe('Server in' + urlServer, function () {
+describe('Server in ' + urlServer, function () {
   describe('Gets', function () {
     it('responds to /', function (done) {
       chai.request(urlServer)
@@ -23,8 +23,9 @@ describe('Server in' + urlServer, function () {
     describe('/api', function () {
       /* TODO: continue test API user put & post */
       it('responds to /api/user', function (done) {
+        let urlUserApi = config.paths.userApi
         chai.request(urlServer)
-          .get('/api/user')
+          .get(urlUserApi)
           .end(function (e, res) {
             expect(res.status).to.equal(200)
             done()
