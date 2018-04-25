@@ -6,8 +6,9 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 }
 
 .InputError {
-  label {color:#f00}
-  input {border-color:#f00}
+  label {color:$error1}
+  input {border-color:$error1}
+  &:hover {border-color:$error1}
 }
 
-.ErrorMessage {}
+.ErrorMessage {color: $error1; padding: 10px;margin:5px 0px}

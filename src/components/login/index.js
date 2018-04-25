@@ -19,18 +19,23 @@ class Login extends React.Component {
 
   activeUser () {
     let {user, close} = this.props
-    user.email = this.state.email
-    user.password = this.state.password
-    user.save()
-      .then((response) => {
-        if (response) close()
-        else {
-          this.setState({error: 'Los datos de login/registro son erroneos'})
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    let {email, password} = this.state
+    if (email && password) {
+      user.email = email
+      user.password = password
+      user.save()
+        .then((response) => {
+          if (response) close()
+          else {
+            this.setState({error: 'Los datos de registro/login son erroneos'})
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    } else {
+      this.setState({error: 'Datos incompletos'})
+    }
   }
 
   handleChangeEmail (value) {
