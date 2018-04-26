@@ -26,7 +26,7 @@ function runCommand(command) {
 
 gulp.task('dev', () => gulp.start('default'));
 
-gulp.task('build-main',['styles'], function () {
+gulp.task('build-main',['styles', 'assets'], function () {
   browserify({
       entries: [`${path.src}/components/main.js`],
       transform: [babelify]
@@ -35,13 +35,17 @@ gulp.task('build-main',['styles'], function () {
       .pipe(buffer())
       .pipe(uglify())
       .pipe(gulp.dest(`${path.dest}/public`))
-
 })
 
 gulp.task('styles', ['build-server'], function() {
     gulp.src(`${path.src}/sass/**/*.scss`)
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(`${path.dest}/public/css/`))
+});
+
+gulp.task('assets', function() {
+    gulp.src(`${path.src}/public/**/*`)
+        .pipe(gulp.dest(`${path.dest}/public/`))
 });
 
 gulp.task('build-server', function () {
