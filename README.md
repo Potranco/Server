@@ -14,7 +14,7 @@ server: http://localhost:3000
 
 # Next steps
 
-- Design login/registry
+- Process new user
 - Design User page
   - delete User
 - Refactor test server
