@@ -4,9 +4,14 @@ class Input extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: props.value || ''
+      value: props.value || '',
+      required: props.required || false,
+      validate: props.validate || false,
+      idValid: false,
+      error: false
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleOnBlur = this.handleOnBlur.bind(this)
   }
 
   handleChange (event) {
@@ -15,15 +20,28 @@ class Input extends React.Component {
     onChange(event.target.value)
   }
 
+  handleOnBlur (event) {
+    if (event.target.validity.typeMismatch) {
+      this.setState({error: true})
+    } else {
+      this.setState({error: false})
+    }
+  }
+
   render () {
-    let {type, name} = this.props
+    let {type, name, label, placeholder} = this.props
 
     return (
-      <input
-        type={type}
-        name={name}
-        value={this.state.value}
-        onChange={this.handleChange} />
+      <div className={this.state.error ? 'InputError' : ''}>
+        { label && <label htmlFor={name}>{label}</label> }
+        <input
+          type={type}
+          name={name}
+          value={this.state.value}
+          placeholder={placeholder}
+          onChange={this.handleChange}
+          onBlur={this.handleOnBlur} />
+      </div>
     )
   }
 }

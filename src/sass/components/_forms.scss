@@ -4,3 +4,11 @@
 input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
   color: $text1Color;
 }
+
+.InputError {
+  label {color:$error1}
+  input {border-color:$error1}
+  &:hover {border-color:$error1}
+}
+
+.ErrorMessage {color: $error1; padding: 10px;margin:5px 0px}

@@ -8,7 +8,7 @@ class User {
     this.name = 'Invitado'
     this.email = ''
     this.avatar = ''
-    this.active = true
+    this.active = false
     this.url = ''
     this.password = ''
     this.save = saveUser

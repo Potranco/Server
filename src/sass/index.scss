@@ -1,6 +1,7 @@
 @import "common/common";
 @import "components/forms";
 @import "components/buttons";
+@import "components/popups";
 
 body{
   transition: padding-left 0.5s;
@@ -88,6 +89,11 @@ body{
       cursor: pointer;
     }
   }
+}
+
+.Login {
+  width: 250px;
+  input {width:100%;}
 }
 
 .More {

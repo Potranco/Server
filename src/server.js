@@ -3,9 +3,10 @@ import Routers from './routers/index.js'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import dbConfig from './db/config.js'
+import config from './configServer.js'
 
 const server = express()
-const port = 3000
+const {url, port} = config
 const dbUrl = dbConfig.host + ':' + dbConfig.port + '/' + dbConfig.dbName
 
 server.use(bodyParser.urlencoded({ extended: true }))
@@ -21,7 +22,7 @@ mongoose.connect(dbUrl, function (error, res) {
   }
   server.listen(port, function () {
     console.log('Connect to DB', res.name, 'on', res.host + ':' + res.port)
-    console.log('Project D20 Server in http://localhost:3000')
+    console.log('Project D20 Server in', url + ':' + port)
     console.log('CTRL-C to exit!')
   })
 })
