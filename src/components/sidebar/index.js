@@ -9,16 +9,13 @@ class SideBar extends React.Component {
       user: props.user,
       body: props.body,
       activeSideBar: props.activeSideBar,
-      idLoginActive: false
+      isLoginActive: false
     }
     this.activelogin = this.activeLogin.bind(this)
-    this.displayUser = this.displayUser.bind(this)
     this.goToUser = this.goToUser.bind(this)
+    this.isNewUser = this.isNewUser.bind(this)
     this.changedisplay = this.changedisplay.bind(this)
-  }
-
-  changeUser (user) {
-    this.setState({user: user})
+    this.activeEditUser = this.activeEditUser.bind(this)
   }
 
   changedisplay () {
@@ -28,16 +25,21 @@ class SideBar extends React.Component {
 
   goToUser () {
     let user = this.state
-    if (user.id) this.displayUser()
+    if (this.isNewUser() && user.id) this.activeEditUser()
     else this.activelogin()
   }
 
-  displayUser () {
+  activeEditUser () {
     console.log('Display user active')
   }
 
   activeLogin () {
-    this.setState({idLoginActive: !this.state.idLoginActive})
+    this.setState({isLoginActive: !this.state.isLoginActive})
+  }
+
+  isNewUser () {
+    let {user} = this.state
+    return !user.active
   }
 
   componentWillMount () {
@@ -46,7 +48,7 @@ class SideBar extends React.Component {
   }
 
   render () {
-    let {user, idLoginActive} = this.state
+    let {user, isLoginActive} = this.state
 
     return (
       <div className='SideBar'>
@@ -62,7 +64,7 @@ class SideBar extends React.Component {
           <li><a href=''>Campañas</a></li>
           <li><a href=''>Biblioteca</a></li>
         </ul>
-        { idLoginActive && <Login user={user} close={this.activeLogin.bind(this)} /> }
+        { isLoginActive && <Login user={user} close={this.goToUser} /> }
       </div>
     )
   }
