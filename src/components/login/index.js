@@ -51,18 +51,9 @@ class Login extends React.Component {
       <Popup title='Acceso / Registro' onClose={this.props.close}>
         <form action='#' className='Login'>
           {!!error && <div className='ErrorMessage'>{error}</div>}
-          <Input
-            type='email'
-            required
-            label='email'
-            name='email'
-            placeholder='ejemplo@email.com'
+          <Input type='email' required label='email' name='email' placeholder='ejemplo@email.com'
             onChange={this.handleChangeEmail.bind(this)} />
-          <Input
-            type='password'
-            required
-            label='contraseña'
-            name='email'
+          <Input type='password' required label='contraseña' name='email'
             onChange={this.handleChangePassword.bind(this)} />
           <button type='button' onClick={this.activeUser.bind(this)}>Aceptar</button>
         </form>

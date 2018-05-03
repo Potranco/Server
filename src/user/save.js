@@ -33,6 +33,7 @@ const save = function () {
       this.name = data.name
       this.email = data.email
       this.active = data.active
+      this.url = '/user/' + data._id
       return true
     }.bind(this))
     .catch(function (error) {

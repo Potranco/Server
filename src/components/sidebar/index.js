@@ -1,4 +1,5 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 import ShowUser from '../ShowUser/index.js'
 import Login from '../login/index.js'
 
@@ -30,7 +31,8 @@ class SideBar extends React.Component {
   }
 
   activeEditUser () {
-    console.log('Display user active')
+    let user = this.state
+    browserHistory.push(user.url)
   }
 
   activeLogin () {
@@ -49,7 +51,6 @@ class SideBar extends React.Component {
 
   render () {
     let {user, isLoginActive} = this.state
-
     return (
       <div className='SideBar'>
         <a className='ChangeDisplay' onClick={this.changedisplay} />
