@@ -2,6 +2,7 @@
 @import "components/forms";
 @import "components/buttons";
 @import "components/popups";
+@import "components/box";
 
 body{
   transition: padding-left 0.5s;
@@ -108,4 +109,9 @@ body{
   &:hover{
     border-style: solid;
   }
+}
+
+.Content {
+  padding: 30px;
+  
 }

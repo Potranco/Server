@@ -20,15 +20,17 @@ const App = (props) => {
         activeSideBar={props.activeSideBar}
         body={props.body}
         user={user} />
-      <div className='wrap Content'>
+      <div className='wrap'>
         <Header />
+        <div className='Content'>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/user' component={EditUser} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+          </Switch>
+        </div>
       </div>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/user' component={EditUser} />
-        <Route path='/about' component={About} />
-        <Route path='/contact' component={Contact} />
-      </Switch>
     </div>
   )
 }

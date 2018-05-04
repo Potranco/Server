@@ -1,0 +1,13 @@
+@import "../common/variables";
+@import "../common/mixins";
+
+.Box {
+  padding: 20px 0px;
+  border: 1px solid $color9;
+  background: $color4;
+  border-radius: 15px;
+
+  h3 {
+    @include l-text
+  }
+}

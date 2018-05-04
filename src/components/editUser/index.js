@@ -1,10 +1,11 @@
 import React from 'react'
 import Input from '../forms/input.js'
+import Box from '../utils/index.js'
 
 class EditUser extends React.Component {
   render () {
     return (
-      <div>
+      <Box title='edita tu perfil'>
         <Input type='email' required label='email' name='email' placeholder='ejemplo@email.com' />
         <Input type='password' required label='contraseña' name='password' placeholder='contraseña de acceso' />
         <Input type='text' required label='apodo' name='name' placeholder='Como quieres que te llamen' />
@@ -13,7 +14,7 @@ class EditUser extends React.Component {
           <input type='checkbox' name='active' /> Cuenta activa
         </label>
         <button type='button'>Aceptar</button>
-      </div>
+      </Box>
     )
   }
 }
