@@ -1,4 +1,4 @@
 import isEmail from './isEmail.js'
-import Box from './box.js'
+import BoxContent from './box.js'
 
-export {isEmail, Box}
+export {isEmail, BoxContent}

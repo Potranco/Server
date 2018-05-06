@@ -13,7 +13,7 @@ const App = (props) => {
   const user = (props.userId)
     ? new User(props.userId)
     : new User()
-
+  const editUser = () => <EditUser user={user} />
   return (
     <div>
       <SideBar
@@ -25,7 +25,7 @@ const App = (props) => {
         <div className='Content'>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/user' component={EditUser} />
+            <Route path='/user' component={editUser} />
             <Route path='/about' component={About} />
             <Route path='/contact' component={Contact} />
           </Switch>
