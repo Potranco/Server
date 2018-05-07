@@ -1,6 +1,6 @@
 import React from 'react'
 import Input from '../forms/input.js'
-import BoxContent from '../utils/box.js'
+import {BoxContent} from '../utils/index.js'
 
 class EditUser extends React.Component {
   constructor (props) {
@@ -11,7 +11,6 @@ class EditUser extends React.Component {
   }
   render () {
     let {user} = this.state
-    console.log(user)
     return (
       <BoxContent title='edita tu perfil'>
         <Input type='email' required label='email' name='email' placeholder='ejemplo@email.com' value={user.email} />
