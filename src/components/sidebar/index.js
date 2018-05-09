@@ -56,13 +56,14 @@ class SideBar extends React.Component {
         <a className='ChangeDisplay' onClick={this.changedisplay} />
         <ShowUser user={user} />
         <div className='Dialog ShowUserMenu'>
-          <a href=''>Ajustes</a>
-          <a href=''>Logout</a>
+          <a href='/ajustes'>Ajustes</a>
+          <a href='/logout'>Logout</a>
         </div>
         <button onClick={this.goToUser}>Registrarse</button>
         <ul className='MenuApp'>
-          <li><a href=''>Personajes</a></li>
-          <li><a href=''>Campañas</a></li>
+          <li><a href='/chars'>Personajes</a></li>
+          <li><a href='/campaigns'>Campañas</a></li>
+          <li><a href='/users'>Usuarios</a></li>
           <li><a href=''>Biblioteca</a></li>
         </ul>
         { isLoginActive && <Login user={user} close={this.goToUser} /> }

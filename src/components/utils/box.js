@@ -5,14 +5,16 @@ class BoxContent extends React.Component {
     super(props)
     this.state = {
       title: props.title,
-      width: props.width
+      width: props.width,
+      className: props.className
     }
   }
 
   render () {
-    let {title} = this.state
+    let {title, className} = this.state
+    let classFinale = className ? 'Box ' + className : 'Box'
     return (
-      <div className='Box'>
+      <div className={classFinale} >
         { title && <h3>{title}</h3> }
         { this.props.children }
       </div>

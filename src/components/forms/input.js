@@ -8,14 +8,15 @@ class Input extends React.Component {
       required: props.required || false,
       validate: props.validate || false,
       idValid: false,
-      error: false
+      error: false,
+      onChange: this.props.onChange || function (value) { return value }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleOnBlur = this.handleOnBlur.bind(this)
   }
 
   handleChange (event) {
-    let { onChange } = this.props
+    let { onChange } = this.state
     this.setState({value: event.target.value})
     onChange(event.target.value)
   }
@@ -30,7 +31,6 @@ class Input extends React.Component {
 
   render () {
     let {type, name, label, placeholder} = this.props
-
     return (
       <div className={this.state.error ? 'InputError' : ''}>
         { label && <label htmlFor={name}>{label}</label> }

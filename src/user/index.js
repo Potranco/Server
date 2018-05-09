@@ -7,7 +7,7 @@ class User {
     this.id = userId
     this.name = 'Invitado'
     this.email = ''
-    this.avatar = ''
+    this.avatar = '/img/default_avatar.png'
     this.active = false
     this.url = ''
     this.password = ''
