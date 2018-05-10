@@ -56,9 +56,22 @@ class EditUser extends React.Component {
   handleChangeActive (obj) {
     this.setState({active: obj.value})
   }
+  handleCLickCancel (value) {
+    let { email, password, avatar, name, active } = this.props.user
+    this.setState({
+      email: email,
+      password: password,
+      avatar: avatar,
+      name: name,
+      active: active,
+      error: '',
+      message: ''
+    })
+  }
 
   render () {
     let { email, password, avatar, name, active, error, message } = this.state
+    console.log(active)
     return (
       <BoxContent title='edita tu perfil' className='EditUser BoxContent Middle'>
         {!!message && <div className='Message'>{message}</div>}
@@ -72,9 +85,10 @@ class EditUser extends React.Component {
         <Input type='text' required label='avatar' name='avatar' placeholder='imagen. lo vamos a cambiar' value={avatar}
           onChange={this.handleChangeAvatar.bind(this)} />
         <label>
-          <input type='checkbox' name='active' checked={active} onChange={this.handleChangeActive.bind(this)} /> Cuenta activa
+          <input type='checkbox' name='active' defaultChecked={active} onChange={this.handleChangeActive.bind(this)} /> Cuenta activa
         </label>
         <div className='Buttons'>
+          <button type='button' onClick={this.handleCLickCancel.bind(this)}>Cancelar</button>
           <button type='button' onClick={this.saveUser.bind(this)}>Aceptar</button>
         </div>
       </BoxContent>

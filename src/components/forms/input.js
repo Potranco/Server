@@ -29,6 +29,10 @@ class Input extends React.Component {
     }
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.setState({value: nextProps.value})
+  }
+
   render () {
     let {type, name, label, placeholder} = this.props
     return (

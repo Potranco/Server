@@ -3,7 +3,7 @@ import saveUser from './save.js'
 import config from './config.js'
 
 class User {
-  constructor (userId = false) {
+  constructor (userId = false, callBack = () => true) {
     this.id = userId
     this.name = 'Invitado'
     this.email = ''
@@ -12,6 +12,7 @@ class User {
     this.url = ''
     this.password = ''
     this.save = saveUser
+    this.callBack = callBack
     if (this.id) this.load()
   }
 
@@ -22,7 +23,7 @@ class User {
     const url = config.host + this.id
     fetch(url, header)
       .then(function (response) {
-        console.log(response)
+        this.callBack()
       })
   }
 
@@ -33,7 +34,7 @@ class User {
     const url = config.host + this.id
     fetch(url, header)
       .then(function (response) {
-        console.log(response)
+        this.callBack()
       })
   }
 }

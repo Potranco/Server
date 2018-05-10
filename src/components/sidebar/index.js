@@ -1,5 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import { NavLink } from 'react-router-dom'
 import ShowUser from '../ShowUser/index.js'
 import Login from '../login/index.js'
 
@@ -25,13 +26,13 @@ class SideBar extends React.Component {
   }
 
   goToUser () {
-    let user = this.state
+    let user = this.props
     if (this.isNewUser() && user.id) this.activeEditUser()
     else this.activelogin()
   }
 
   activeEditUser () {
-    let user = this.state
+    let user = this.props
     browserHistory.push(user.url)
   }
 
@@ -40,7 +41,7 @@ class SideBar extends React.Component {
   }
 
   isNewUser () {
-    let {user} = this.state
+    let {user} = this.props
     return !user.active
   }
 
@@ -50,21 +51,22 @@ class SideBar extends React.Component {
   }
 
   render () {
-    let {user, isLoginActive} = this.state
+    let {isLoginActive} = this.state
+    let {user} = this.props
     return (
       <div className='SideBar'>
         <a className='ChangeDisplay' onClick={this.changedisplay} />
         <ShowUser user={user} />
         <div className='Dialog ShowUserMenu'>
-          <a href='/ajustes'>Ajustes</a>
-          <a href='/logout'>Logout</a>
+          <NavLink to='/ajustes'>Ajustes</NavLink>
+          <NavLink to='/logout'>Logout</NavLink>
         </div>
-        <button onClick={this.goToUser}>Registrarse</button>
+        { !user.active && <button onClick={this.goToUser}>Registrarse</button> }
         <ul className='MenuApp'>
-          <li><a href='/chars'>Personajes</a></li>
-          <li><a href='/campaigns'>Campañas</a></li>
-          <li><a href='/users'>Usuarios</a></li>
-          <li><a href=''>Biblioteca</a></li>
+          <li><NavLink to='/chars'>Personajes</NavLink></li>
+          <li><NavLink to='/campaigns'>Campañas</NavLink></li>
+          <li><NavLink to='/users'>Usuarios</NavLink></li>
+          <li><NavLink to=''>Biblioteca</NavLink></li>
         </ul>
         { isLoginActive && <Login user={user} close={this.goToUser} /> }
       </div>

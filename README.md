@@ -14,9 +14,15 @@ server: http://localhost:3000
 
 # Next steps
 
-- Process new user
-- Design User page
-  - delete User
+- Design User edit page
+  - update image
+  - Change password (basic no email)
+- delete User / deractive
+- Add remember me (localStorage basic no tokken)
+- Create list User
+  - Control pages in unique page
+  - add search in list users
+  - create display page user
 - Refactor test server
 - Refactor class User server (consume mongodb)
 - Create correct get services user, chars, campaign,...

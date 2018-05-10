@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import config from './config.js'
-
+// TODO: add save in localStorage
 const save = function () {
   let data = {
     name: this.name,
@@ -34,6 +34,7 @@ const save = function () {
       this.email = data.email
       this.active = data.active
       this.url = '/user/' + data._id
+      this.callBack()
       return true
     }.bind(this))
     .catch(function (error) {

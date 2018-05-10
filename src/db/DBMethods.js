@@ -45,9 +45,13 @@ export default class DBMethods {
         message: 'Body can not be empty'
       })
     }
-    this.model.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    this.model.findById(req.params.id, function (err, document) {
       if (err) return next(err)
-      return res.json(post)
+      document.set(req.body)
+      document.save(function (err, update) {
+        if (err) return next(err)
+        return res.json(update)
+      })
     })
   }
 
