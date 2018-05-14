@@ -1,5 +1,6 @@
 import React from 'react'
 import Input from '../forms/input.js'
+import UpdateImage from '../forms/updateImage.js'
 import {isEmail, BoxContent} from '../utils/index.js'
 
 class EditUser extends React.Component {
@@ -53,8 +54,8 @@ class EditUser extends React.Component {
   handleChangeAvatar (value) {
     this.setState({avatar: value})
   }
-  handleChangeActive (obj) {
-    this.setState({active: obj.value})
+  handleChangeActive () {
+    this.setState({active: !this.state.active})
   }
   handleCLickCancel (value) {
     let { email, password, avatar, name, active } = this.props.user
@@ -71,7 +72,6 @@ class EditUser extends React.Component {
 
   render () {
     let { email, password, avatar, name, active, error, message } = this.state
-    console.log(active)
     return (
       <BoxContent title='edita tu perfil' className='EditUser BoxContent Middle'>
         {!!message && <div className='Message'>{message}</div>}
@@ -84,8 +84,9 @@ class EditUser extends React.Component {
           onChange={this.handleChangeName.bind(this)} />
         <Input type='text' required label='avatar' name='avatar' placeholder='imagen. lo vamos a cambiar' value={avatar}
           onChange={this.handleChangeAvatar.bind(this)} />
+        <UpdateImage userid={this.props.user.id} />
         <label>
-          <input type='checkbox' name='active' defaultChecked={active} onChange={this.handleChangeActive.bind(this)} /> Cuenta activa
+          <input type='checkbox' name='active' defaultChecked={active} value={active} onChange={this.handleChangeActive.bind(this)} /> Cuenta activa
         </label>
         <div className='Buttons'>
           <button type='button' onClick={this.handleCLickCancel.bind(this)}>Cancelar</button>

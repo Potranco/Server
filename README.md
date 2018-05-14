@@ -17,6 +17,7 @@ server: http://localhost:3000
 - Design User edit page
   - update image
   - Change password (basic no email)
+- Create loader & add in upload image & update user
 - delete User / deractive
 - Add remember me (localStorage basic no tokken)
 - Create list User

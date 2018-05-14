@@ -3,16 +3,13 @@ import Input from '../forms/input.js'
 import Popup from '../popup/index.js'
 import {isEmail} from '../utils/index.js'
 
-/* TODO: add title & close in popup Component */
-/* TODO: add design errors */
-/* TODO: add control in inputs values */
 /* TODO: Think forms constructor */
 
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      email: props.user.email,
+      email: props.user.email || '',
       password: '',
       error: ''
     }

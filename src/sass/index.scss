@@ -37,7 +37,7 @@ body{
 
 .SideBar {
   position: fixed;
-  left: -250px;
+  left: -251px;
   top: 0px;
   width: 250px;
   height: 100%;
@@ -120,3 +120,5 @@ body{
     width: 100%; margin: 20px auto;display: inline-block; max-width: 200px;
   }
 }
+
+.NoDisplay {display:none}
