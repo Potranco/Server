@@ -15,7 +15,7 @@ server: http://localhost:3000
 # Next steps
 
 - Design User edit page
-  - update image
+  - update image (basic 1 image, no cloud cloudinary.com)
   - Change password (basic no email)
 - Create loader & add in upload image & update user
 - delete User / deractive

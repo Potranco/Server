@@ -27,7 +27,8 @@ class UpdateImage extends React.Component {
         return response.ok && response.json()
       })
       .then((data) => {
-        console.log(data)
+        let {image} = data
+        this.props.onchange(config.paths.host + image)
       })
       .catch(function (error) {
         console.log('Upload image error: ', error)

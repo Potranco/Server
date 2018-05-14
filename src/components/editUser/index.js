@@ -82,9 +82,8 @@ class EditUser extends React.Component {
           onChange={this.handleChangePassword.bind(this)} />
         <Input type='text' required label='apodo' name='name' placeholder='Como quieres que te llamen' value={name}
           onChange={this.handleChangeName.bind(this)} />
-        <Input type='text' required label='avatar' name='avatar' placeholder='imagen. lo vamos a cambiar' value={avatar}
-          onChange={this.handleChangeAvatar.bind(this)} />
-        <UpdateImage userid={this.props.user.id} />
+        <img src={avatar} alt='avatar' />
+        <UpdateImage userid={this.props.user.id} onchange={this.handleChangeAvatar.bind(this)} />
         <label>
           <input type='checkbox' name='active' defaultChecked={active} value={active} onChange={this.handleChangeActive.bind(this)} /> Cuenta activa
         </label>

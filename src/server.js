@@ -1,7 +1,7 @@
 import express from 'express'
-import Routers from './routers/index.js'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import Routers from './routers/index.js'
 import dbConfig from './db/config.js'
 import config from './configServer.js'
 

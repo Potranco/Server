@@ -9,8 +9,11 @@ const config = {
   paths: {
     host: '',
     userApi: '',
-    urlTempImages: './public/images/temp',
-    urlFinalImages: './public/images/'
+    images: {
+      serverTemp: './dist/public/images/temp/',
+      server: './dist/public/images/',
+      client: '/images/'
+    }
   }
 }
 
