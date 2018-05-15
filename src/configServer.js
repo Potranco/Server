@@ -14,6 +14,14 @@ const config = {
       server: './dist/public/images/',
       client: '/images/'
     }
+  },
+  images: {
+    cloud: true,
+    serverConfig: {
+      cloud_name: 'project-d-20',
+      api_key: '822113599232928',
+      api_secret: 'MjD_yUqHf6Z1IqaBmT0oAERuu00'
+    }
   }
 }
 
