@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../forms/input.js'
 import UpdateImage from '../forms/updateImage.js'
-import {isEmail, BoxContent} from '../utils/index.js'
+import {isEmail, BoxContent, avatarEdit} from '../utils/index.js'
 
 class EditUser extends React.Component {
   constructor (props) {
@@ -82,8 +82,11 @@ class EditUser extends React.Component {
           onChange={this.handleChangePassword.bind(this)} />
         <Input type='text' required label='apodo' name='name' placeholder='Como quieres que te llamen' value={name}
           onChange={this.handleChangeName.bind(this)} />
-        <img src={avatar} alt='avatar' />
-        <UpdateImage userid={this.props.user.id} onchange={this.handleChangeAvatar.bind(this)} />
+        <label>avatar</label>
+        <div className='EditAvatar'>
+          <img src={avatarEdit(avatar)} alt='avatar' />
+          <UpdateImage userid={this.props.user.id} onchange={this.handleChangeAvatar.bind(this)} />
+        </div>
         <label>
           <input type='checkbox' name='active' defaultChecked={active} value={active} onChange={this.handleChangeActive.bind(this)} /> Cuenta activa
         </label>

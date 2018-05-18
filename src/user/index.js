@@ -1,18 +1,19 @@
 import fetch from 'isomorphic-fetch'
 import saveUser from './save.js'
 import config from './config.js'
+import imageDefault from './imageDefault.js'
 
 class User {
   constructor (userId = false, callBack = () => true) {
     this.id = userId
     this.name = 'Invitado'
     this.email = ''
-    this.avatar = '/img/default_avatar.png'
+    this.avatar = imageDefault
     this.active = false
     this.url = ''
     this.password = ''
-    this.save = saveUser
     this.callBack = callBack
+    this.save = saveUser
     if (this.id) this.load()
   }
 

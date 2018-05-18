@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 import config from './config.js'
 // TODO: add save in localStorage
 const save = function () {
+  // this is class User
   let data = {
     name: this.name,
     email: this.email,
@@ -24,20 +25,19 @@ const save = function () {
   header.method = this.id ? 'PUT' : 'POST'
 
   return fetch(url, header)
-    .then(function (response) {
-      return response.ok && response.json()
-    })
-    .then(function (data) {
+    .then((response) => response.ok && response.json())
+    .then((data) => {
       if (!data) return false
       this.id = data._id
       this.name = data.name
       this.email = data.email
       this.active = data.active
+      this.avatar = data.avatar
       this.url = '/user/' + data._id
       this.callBack()
       return true
-    }.bind(this))
-    .catch(function (error) {
+    })
+    .catch((error) => {
       console.log('User.save error: ', error)
       return false
     })

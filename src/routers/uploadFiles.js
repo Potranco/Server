@@ -8,7 +8,7 @@ function uploadImage (req, res, next) {
   let finalPath = config.paths.images.server + userid + '_' + req.file.originalname
   let clientPath = config.paths.images.client + userid + '_' + req.file.originalname
   if (config.images.cloud) {
-    uploadCloud(req.file.destination + req.file.filename, (url) => res.json({image: url}))
+    uploadCloud(req.file.destination + req.file.filename, (image) => res.json(image))
   } else {
     fs.createReadStream(req.file.destination + req.file.filename)
       .pipe(fs.createWriteStream(finalPath))

@@ -21,6 +21,13 @@ const config = {
       cloud_name: 'project-d-20',
       api_key: '822113599232928',
       api_secret: 'MjD_yUqHf6Z1IqaBmT0oAERuu00'
+    },
+    server: {
+      url: 'https://res.cloudinary.com/project-d-20'
+    },
+    rules: {
+      avatar: '/image/upload/c_scale,h_40,w_40/',
+      avatarEdit: '/image/upload/c_limit,h_150,w_150/'
     }
   }
 }

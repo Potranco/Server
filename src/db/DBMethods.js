@@ -47,8 +47,8 @@ export default class DBMethods {
     }
     this.model.findById(req.params.id, function (err, document) {
       if (err) return next(err)
-      document.set(req.body)
-      document.save(function (err, update) {
+      var updated = Object.assign(document, req.body)
+      updated.save(function (err, update) {
         if (err) return next(err)
         return res.json(update)
       })

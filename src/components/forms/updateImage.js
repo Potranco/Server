@@ -13,6 +13,7 @@ class UpdateImage extends React.Component {
   }
 
   handleChange (event) {
+    if (!event.target.files.length) return false
     const data = new FormData()
     data.append('image', event.target.files[0])
     data.append('userid', this.props.userid)
@@ -26,19 +27,25 @@ class UpdateImage extends React.Component {
       .then(function (response) {
         return response.ok && response.json()
       })
-      .then((data) => {
-        let {image} = data
-        this.props.onchange(image)
-      })
+      .then(this.props.onchange)
       .catch(function (error) {
         console.log('Upload image error: ', error)
         return false
       })
   }
 
+  handleClick () {
+    this.setState({onclick: true})
+  }
+
   render () {
     return (
-      <input type='file' name='image' onChange={this.handleChange} />
+      <div>
+        <label>
+          Cambiar imagen
+          <input type='file' name='image' onChange={this.handleChange} />
+        </label>
+      </div>
     )
   }
 }

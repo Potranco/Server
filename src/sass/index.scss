@@ -116,6 +116,12 @@ body{
 }
 
 .EditUser {
+  .EditAvatar {
+    display:flex; align-items:center;
+    img {background:$color2; padding:10px; border: 1px solid $color9; border-radius: 5px;}
+    input {width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1;}
+    label {cursor: pointer}
+  }
   button {
     width: 100%; margin: 20px auto;display: inline-block; max-width: 200px;
   }

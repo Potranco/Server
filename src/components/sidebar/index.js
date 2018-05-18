@@ -8,7 +8,6 @@ class SideBar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      user: props.user,
       body: props.body,
       activeSideBar: props.activeSideBar,
       isLoginActive: false

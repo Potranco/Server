@@ -17,7 +17,6 @@ class Input extends React.Component {
 
   handleChange (event) {
     let { onChange } = this.state
-    this.setState({value: event.target.value})
     onChange(event.target.value)
   }
 
@@ -34,14 +33,14 @@ class Input extends React.Component {
   }
 
   render () {
-    let {type, name, label, placeholder} = this.props
+    let {type, value, name, label, placeholder} = this.props
     return (
       <div className={this.state.error ? 'InputError' : ''}>
         { label && <label htmlFor={name}>{label}</label> }
         <input
           type={type}
           name={name}
-          value={this.state.value}
+          value={value}
           placeholder={placeholder}
           onChange={this.handleChange}
           onBlur={this.handleOnBlur} />
