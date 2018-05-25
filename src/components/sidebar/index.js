@@ -1,4 +1,6 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
+import { NavLink } from 'react-router-dom'
 import ShowUser from '../ShowUser/index.js'
 import Login from '../login/index.js'
 
@@ -6,19 +8,15 @@ class SideBar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      user: props.user,
       body: props.body,
       activeSideBar: props.activeSideBar,
-      idLoginActive: false
+      isLoginActive: false
     }
     this.activelogin = this.activeLogin.bind(this)
-    this.displayUser = this.displayUser.bind(this)
     this.goToUser = this.goToUser.bind(this)
+    this.isNewUser = this.isNewUser.bind(this)
     this.changedisplay = this.changedisplay.bind(this)
-  }
-
-  changeUser (user) {
-    this.setState({user: user})
+    this.activeEditUser = this.activeEditUser.bind(this)
   }
 
   changedisplay () {
@@ -27,17 +25,23 @@ class SideBar extends React.Component {
   }
 
   goToUser () {
-    let user = this.state
-    if (user.id) this.displayUser()
+    let user = this.props
+    if (this.isNewUser() && user.id) this.activeEditUser()
     else this.activelogin()
   }
 
-  displayUser () {
-    console.log('Display user active')
+  activeEditUser () {
+    let user = this.props
+    browserHistory.push(user.url)
   }
 
   activeLogin () {
-    this.setState({idLoginActive: !this.state.idLoginActive})
+    this.setState({isLoginActive: !this.state.isLoginActive})
+  }
+
+  isNewUser () {
+    let {user} = this.props
+    return !user.active
   }
 
   componentWillMount () {
@@ -46,23 +50,24 @@ class SideBar extends React.Component {
   }
 
   render () {
-    let {user, idLoginActive} = this.state
-
+    let {isLoginActive} = this.state
+    let {user} = this.props
     return (
       <div className='SideBar'>
         <a className='ChangeDisplay' onClick={this.changedisplay} />
         <ShowUser user={user} />
-        <div className='Dialog ShowUserMenu'>
-          <a href=''>Ajustes</a>
-          <a href=''>Logout</a>
+        <div className='Dialog ShowUserMenu NoDisplay'>
+          <NavLink to='/ajustes'>Ajustes</NavLink>
+          <NavLink to='/logout'>Logout</NavLink>
         </div>
-        <button onClick={this.goToUser}>Registrarse</button>
+        { !user.id && !user.active && <button onClick={this.goToUser}>Registrarse</button> }
         <ul className='MenuApp'>
-          <li><a href=''>Personajes</a></li>
-          <li><a href=''>Campañas</a></li>
-          <li><a href=''>Biblioteca</a></li>
+          <li><NavLink to='/chars'>Personajes</NavLink></li>
+          <li><NavLink to='/campaigns'>Campañas</NavLink></li>
+          <li><NavLink to='/users'>Usuarios</NavLink></li>
+          <li><NavLink to=''>Biblioteca</NavLink></li>
         </ul>
-        { idLoginActive && <Login user={user} close={this.activeLogin.bind(this)} /> }
+        { isLoginActive && <Login user={user} close={this.goToUser} /> }
       </div>
     )
   }

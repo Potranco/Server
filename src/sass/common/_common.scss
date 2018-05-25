@@ -26,8 +26,8 @@
 
 body {
     margin: 0px 0px 0px 0px;
-    background-color: #ebeced;
-    color:#444;
+    background-color: $color2;
+    color:$color7;
     -webkit-text-stroke: 1px transparent;
     height:100%;
     font-family: $primaryFont;
@@ -46,7 +46,7 @@ li {
 a {
     text-decoration:none;
 }
-label {font-size:$fontSizeS;position:relative;display:block;
+label {font-size:$fontSizeS;position:relative;display:block;font-weight: bold;margin:7px 0px;padding-left:7px;text-transform:lowercase;
   color:$text1Color;
   &._InputError {
     ._MsgError {

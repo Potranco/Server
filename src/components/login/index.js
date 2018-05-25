@@ -3,19 +3,17 @@ import Input from '../forms/input.js'
 import Popup from '../popup/index.js'
 import {isEmail} from '../utils/index.js'
 
-/* TODO: add title & close in popup Component */
-/* TODO: add design errors */
-/* TODO: add control in inputs values */
 /* TODO: Think forms constructor */
 
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      email: props.user.email,
+      email: props.user.email || '',
       password: '',
       error: ''
     }
+    this.handleChangeEmail = this.handleChangeEmail.bind(this)
   }
 
   activeUser () {
@@ -51,18 +49,9 @@ class Login extends React.Component {
       <Popup title='Acceso / Registro' onClose={this.props.close}>
         <form action='#' className='Login'>
           {!!error && <div className='ErrorMessage'>{error}</div>}
-          <Input
-            type='email'
-            required
-            label='email'
-            name='email'
-            placeholder='ejemplo@email.com'
+          <Input type='email' value={this.state.user} required label='email' name='email' placeholder='ejemplo@email.com'
             onChange={this.handleChangeEmail.bind(this)} />
-          <Input
-            type='password'
-            required
-            label='contraseña'
-            name='email'
+          <Input type='password' value={this.state.password} required label='contraseña' name='email'
             onChange={this.handleChangePassword.bind(this)} />
           <button type='button' onClick={this.activeUser.bind(this)}>Aceptar</button>
         </form>

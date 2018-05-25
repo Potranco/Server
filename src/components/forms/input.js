@@ -8,15 +8,15 @@ class Input extends React.Component {
       required: props.required || false,
       validate: props.validate || false,
       idValid: false,
-      error: false
+      error: false,
+      onChange: this.props.onChange || function (value) { return value }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleOnBlur = this.handleOnBlur.bind(this)
   }
 
   handleChange (event) {
-    let { onChange } = this.props
-    this.setState({value: event.target.value})
+    let { onChange } = this.state
     onChange(event.target.value)
   }
 
@@ -28,16 +28,19 @@ class Input extends React.Component {
     }
   }
 
-  render () {
-    let {type, name, label, placeholder} = this.props
+  componentWillReceiveProps (nextProps) {
+    this.setState({value: nextProps.value})
+  }
 
+  render () {
+    let {type, value, name, label, placeholder} = this.props
     return (
       <div className={this.state.error ? 'InputError' : ''}>
         { label && <label htmlFor={name}>{label}</label> }
         <input
           type={type}
           name={name}
-          value={this.state.value}
+          value={value}
           placeholder={placeholder}
           onChange={this.handleChange}
           onBlur={this.handleOnBlur} />

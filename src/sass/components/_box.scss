@@ -1,0 +1,21 @@
+@import "../common/variables";
+@import "../common/mixins";
+
+.Box {
+  padding: 20px 0px;
+  border: 1px solid $color9;
+  background: $color4;
+  border-radius: 15px;
+  width: 100%;
+
+  h3 {
+    @include l-text
+    padding: 0px 0px 20px;
+  }
+
+  &.BoxContent {padding:20px 20px;}
+  &.one-fourth {width:25%}
+  &.Middle, &.two-fourth {width: 50%}
+  &.three-fourth {width:75%}
+
+}

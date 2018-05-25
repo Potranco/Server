@@ -1,48 +1,56 @@
 import React from 'react'
-import { Route, Switch, NavLink } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import SideBar from './sidebar/index.js'
 import Header from './header.js'
 import User from '../user/index.js'
-import MyComponent from './MyComponent'
+import EditUser from './editUser/index.js'
 
 const Home = () => <h1>Home</h1>
-const About = () => <h1>About</h1>
-const Contact = () => <h1>Contact</h1>
+const Chars = () => <h1>Personajes</h1>
+const Campaigns = () => <h1>Campañas</h1>
+const Users = () => <h1>Usuarios</h1>
+const Library = () => <h1>Biblioteca</h1>
 
-const Links = () => (
-  <nav>
-    <NavLink exact to='/'>Home</NavLink>
-    <NavLink to='/about'>About</NavLink>
-    <NavLink to='/contact'>Contact</NavLink>
-    <NavLink to='/component'>Component</NavLink>
-  </nav>
-)
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.handlerForceUpdate = this.handlerForceUpdate.bind(this)
+    this.state = {
+      user: (props.userId) ? new User(props.userId, this.handlerForceUpdate) : new User(null, this.handlerForceUpdate),
+      activeSideBar: props.activeSideBar,
+      body: props.body
+    }
+  }
 
-const MyComponentCompiled = () => <MyComponent />
+  handlerForceUpdate () {
+    this.forceUpdate()
+  }
 
-const App = (props) => {
-  const user = (props.userId)
-    ? new User(props.userId)
-    : new User()
-
-  return (
-    <div>
-      <SideBar
-        activeSideBar={props.activeSideBar}
-        body={props.body}
-        user={user} />
-      <div className='wrap Content'>
-        <Header />
+  render () {
+    let {user, body, activeSideBar} = this.state
+    let editUser = () => <EditUser user={user} />
+    return (
+      <div>
+        <SideBar
+          activeSideBar={activeSideBar}
+          body={body}
+          user={user} />
+        <div className='wrap'>
+          <Header />
+          <div className='Content'>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/user' component={editUser} />
+              <Route path='/chars' component={Chars} />
+              <Route path='/campaigns' component={Campaigns} />
+              <Route path='/users' component={Users} />
+              <Route path='/library' component={Library} />
+            </Switch>
+          </div>
+        </div>
       </div>
-      <Links />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/about' component={About} />
-        <Route path='/contact' component={Contact} />
-        <Route path='/component' component={MyComponentCompiled} />
-      </Switch>
-    </div>
-  )
+    )
+  }
 }
 
 export default App
