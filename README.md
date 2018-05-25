@@ -14,10 +14,7 @@ server: http://localhost:3000
 
 # Next steps
 
-- Design User edit page
-  - Create imageDefault
-  - update image (basic 1 image, no cloud cloudinary.com)
-  - Change password (basic no email)
+- Save data in loacalStorage & reload data
 - Create loader & add in upload image & update user
 - delete User / deractive
 - Add remember me (localStorage basic no tokken)
