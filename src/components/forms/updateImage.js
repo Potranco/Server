@@ -2,6 +2,7 @@ import React from 'React'
 import fetch from 'isomorphic-fetch'
 import FormData from 'form-data'
 import config from '../../configServer.js'
+import {imageAvatar} from '../utils/imageUrl.js'
 
 class UpdateImage extends React.Component {
   constructor (props) {
@@ -27,6 +28,7 @@ class UpdateImage extends React.Component {
       .then(function (response) {
         return response.ok && response.json()
       })
+      .then(imageAvatar)
       .then(this.props.onchange)
       .catch(function (error) {
         console.log('Upload image error: ', error)

@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../forms/input.js'
 import UpdateImage from '../forms/updateImage.js'
-import {isEmail, BoxContent, avatarEdit} from '../utils/index.js'
+import {isEmail, BoxContent} from '../utils/index.js'
 
 class EditUser extends React.Component {
   constructor (props) {
@@ -84,7 +84,7 @@ class EditUser extends React.Component {
           onChange={this.handleChangeName.bind(this)} />
         <label>avatar</label>
         <div className='EditAvatar'>
-          <img src={avatarEdit(avatar)} alt='avatar' />
+          <img src={avatar} alt='avatar' />
           <UpdateImage userid={this.props.user.id} onchange={this.handleChangeAvatar.bind(this)} />
         </div>
         <label>

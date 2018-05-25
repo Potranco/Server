@@ -26,8 +26,7 @@ const config = {
       url: 'https://res.cloudinary.com/project-d-20'
     },
     rules: {
-      avatar: '/image/upload/c_scale,h_40,w_40/',
-      avatarEdit: '/image/upload/c_limit,h_150,w_150/'
+      avatar: '/image/upload/c_limit,h_150,w_150/'
     }
   }
 }
