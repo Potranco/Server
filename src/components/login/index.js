@@ -1,6 +1,6 @@
 import React from 'react'
 import Input from '../forms/input.js'
-import Popup from '../popup/index.js'
+import {Popup} from '../popup/index.js'
 import {isEmail} from '../utils/index.js'
 
 /* TODO: Think forms constructor */
