@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Dialog from '../popup/dialog.js'
 
+/* TODO: change menu user, move in sidebar or new Component */
 export default class ShowUser extends React.Component {
   constructor (props) {
     super(props)
@@ -10,12 +12,17 @@ export default class ShowUser extends React.Component {
     this.changeMenuDisplay = this.changeMenuDisplay.bind(this)
   }
 
-  showMenu () {
-    return <div className='Dialog ShowUserMenu '>
-      <NavLink to={this.props.user.url}>Editar perfil</NavLink>
-      <NavLink to='/ajustes'>Ajustes</NavLink>
-      <NavLink to='/logout'>Logout</NavLink>
-    </div>
+  menuUser () {
+    let {url} = this.props.user
+    let userEditUrl = url + '/edit'
+    return <Dialog className='ShowUserMenu' onClose={this.changeMenuDisplay}>
+      {this.showUserHtml()}
+      <ul>
+        <li><NavLink to={url}>Tu perfil</NavLink></li>
+        <li><NavLink to={userEditUrl}>Editar perfil</NavLink></li>
+        <li><NavLink to='/logout'>Cerrar sesión</NavLink></li>
+      </ul>
+    </Dialog>
   }
 
   changeMenuDisplay () {
@@ -24,17 +31,23 @@ export default class ShowUser extends React.Component {
     })
   }
 
-  render () {
+  showUserHtml (action = false) {
     let {name, avatar, email} = this.props.user
+    return <div className='ShowUser' onClick={action}>
+      <div className='Avatar' style={{backgroundImage: `url(${avatar})`}} />
+      <p>
+        <strong>{name}</strong>
+        <span>{email}</span>
+      </p>
+    </div>
+  }
+
+  render () {
     let {showMenu} = this.state
     return (
-      <div className='CurrentUser ShowUser' onClick={this.changeMenuDisplay.bind(this)}>
-        <div className='Avatar' style={{backgroundImage: `url(${avatar})`}} />
-        <p>
-          <strong>{name}</strong>
-          <span>{email}</span>
-        </p>
-        {showMenu && this.showMenu()}
+      <div className='CurrentUser'>
+        {this.showUserHtml(this.changeMenuDisplay.bind(this))}
+        {showMenu && this.menuUser()}
       </div>
     )
   }
