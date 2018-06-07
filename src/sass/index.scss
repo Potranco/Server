@@ -15,20 +15,18 @@ body{
 }
 
 .wrap{
+  // phone
+  @include s-text;
 
-    // phone
-    @include s-text;
+  // tablet
+  @include breakpoint($mediumResolution){
+      @include xs-text;
+  }
 
-    // tablet
-    @include breakpoint($mediumResolution){
-        @include xs-text;
-    }
-
-    // desktop
-    @include breakpoint($bigResolution){
-        @include xs-text;
-
-    }
+  // desktop
+  @include breakpoint($bigResolution){
+      @include xs-text;
+  }
 }
 
 .Content {
@@ -47,21 +45,20 @@ body{
   z-index: 1;
   transition: left 0.500s;
 
-  a {color:#fff}
+  a {color:$color4}
 
-  .ChangeDisplay {width:40px;height:40px;background:$SidebarBackground;position:absolute;right:-35px;top:10px;border-radius: 5px;cursor: pointer;
+  .ChangeDisplay {
+    width:40px;height:40px;background:$SidebarBackground;position:absolute;right:-35px;top:10px;border-radius: 5px;cursor: pointer;
     /* Icon Close */
   }
 
-  .ShowUser {
-    width:100%;line-height:120%;display:flex;align-items:center;margin-bottom:20px;
-    .Avatar {border-radius:25px;min-width:40px;height:40px;background-position:center;background-size:cover;}
-    p {padding-left: 20px;width:170px;line-height:20px}
-    a {font-size:16px;display:block}
-    span {opacity:0.5; width:180px}
+  .CurrentUser {
+    .ShowUser {cursor: pointer}
+    .ShowUserMenu {
+      width: 200px; padding: 10px; top: 20px; left: 240px;font-size: $fontSizeM;
+      a {color:$text1Color}
+    }
   }
-
-  .ShowUserMenu {}
 
   button {
     width:100%;height:40px;margin:10px 0px;font-weight: normal;
@@ -73,6 +70,16 @@ body{
     .Selected:after{
       width:calc(100% + 40px);
     }
+  }
+}
+
+.ShowUser {
+  width:100%;line-height:120%;display:flex;align-items:center;margin-bottom:20px;
+  .Avatar {border-radius:25px;min-width:40px;height:40px;background-position:center;background-size:cover;}
+  p {
+    padding-left: 20px;width:170px;line-height:20px;
+    strong {font-size:16px;display:block}
+    span {opacity:0.5; width:180px}
   }
 }
 
@@ -116,6 +123,10 @@ body{
 }
 
 .EditUser {
+  width:100%;display:flex;position:relative;vertical-align: top;
+  .ShowUser {max-width: 50%;margin:20px; align-self: flex-start;
+    .ShowUserMenu {display:none}
+  }
   .EditAvatar {
     display:flex; align-items:center;
     img {background:$color2; padding:10px; border: 1px solid $color9; border-radius: 5px;}
@@ -127,4 +138,4 @@ body{
   }
 }
 
-.NoDisplay {display:none}
+.NoDisplay {display:none;}

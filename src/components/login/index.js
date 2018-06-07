@@ -1,6 +1,6 @@
 import React from 'react'
 import Input from '../forms/input.js'
-import Popup from '../popup/index.js'
+import {Popup} from '../popup/index.js'
 import {isEmail} from '../utils/index.js'
 
 /* TODO: Think forms constructor */
@@ -26,8 +26,11 @@ class Login extends React.Component {
     user.password = password
     user.save()
       .then((response) => {
-        if (response) return close()
-        else {
+        if (response) {
+          var localStorage = window.localStorage
+          localStorage.setItem('userId', user.id)
+          return close()
+        } else {
           this.setState({error: 'Los datos de registro/login son erroneos'})
         }
       })

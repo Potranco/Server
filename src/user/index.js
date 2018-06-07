@@ -22,7 +22,14 @@ class User {
     }
     const url = config.host + this.id
     fetch(url, header)
-      .then(function (response) {
+      .then((response) => response.ok && response.json())
+      .then((data) => {
+        this.name = data.name
+        this.active = data.active
+        this.avatar = data.avatar
+        this.email = data.email
+        this.password = data.password
+        this.url = '/user/' + data._id
         this.callBack()
       })
   }

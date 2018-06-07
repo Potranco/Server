@@ -14,7 +14,8 @@ server: http://localhost:3000
 
 # Next steps
 
-- Save data in loacalStorage & reload data
+- Refactor & design userMenu
+- Add more data in loacalStorage
 - Create loader & add in upload image & update user
 - delete User / deractive
 - Add remember me (localStorage basic no tokken)
