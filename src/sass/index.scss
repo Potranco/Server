@@ -54,10 +54,15 @@ body{
 
   .CurrentUser {
     .ShowUser {cursor: pointer}
-    .ShowUserMenu {
-      width: 200px; padding: 10px; top: 20px; left: 240px;font-size: $fontSizeM;
-      a {color:$text1Color}
-    }
+  }
+
+  .ShowUserMenu {
+    width:260px;padding:0px;top:20px;left:230px;font-size: $fontSizeM;
+    ul {border-top: 1px solid $color9; padding:10px 15px}
+    nav {padding: 10px; border-top: 1px solid $color9}
+    nav a {color:$text1Color;display:block}
+    .CurrentUser {padding: 10px 10px 0px}
+    .ShowUser {cursor: default}
   }
 
   button {
