@@ -11,13 +11,14 @@ class Login extends React.Component {
     this.state = {
       email: props.user.email || '',
       password: '',
-      error: ''
+      error: '',
+      onClose: props.onClose
     }
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
   }
 
   activeUser () {
-    let {user, close} = this.props
+    let {user, onClose} = this.props
     let {email, password} = this.state
     if (!email && !password) return this.setState({error: 'Datos incompletos'})
     if (!isEmail(email)) return this.setState({error: 'Email incorrecto'})
@@ -29,7 +30,7 @@ class Login extends React.Component {
         if (response) {
           var localStorage = window.localStorage
           localStorage.setItem('userId', user.id)
-          return close()
+          return onClose()
         } else {
           this.setState({error: 'Los datos de registro/login son erroneos'})
         }
@@ -47,14 +48,14 @@ class Login extends React.Component {
   }
 
   render () {
-    let {error} = this.state
+    let {error, onClose, email, password} = this.state
     return (
-      <Popup title='Acceso / Registro' onClose={this.props.close}>
+      <Popup title='Acceso / Registro' onClose={onClose}>
         <form action='#' className='Login'>
           {!!error && <div className='ErrorMessage'>{error}</div>}
-          <Input type='email' value={this.state.user} required label='email' name='email' placeholder='ejemplo@email.com'
+          <Input type='email' value={email} required label='email' name='email' placeholder='ejemplo@email.com'
             onChange={this.handleChangeEmail.bind(this)} />
-          <Input type='password' value={this.state.password} required label='contraseña' name='email'
+          <Input type='password' value={password} required label='contraseña' name='email'
             onChange={this.handleChangePassword.bind(this)} />
           <button type='button' onClick={this.activeUser.bind(this)}>Aceptar</button>
         </form>

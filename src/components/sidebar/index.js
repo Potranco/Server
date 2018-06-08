@@ -1,6 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import ShowUser from '../ShowUser/index.js'
 import Login from '../login/index.js'
 import MenuUser from './menuUser.js'
@@ -34,8 +33,8 @@ class SideBar extends React.Component {
   }
 
   activeEditUser () {
-    let user = this.props
-    browserHistory.push(user.url)
+    let {user, history} = this.props
+    history.push(user.url)
   }
 
   activeLogin () {
@@ -72,11 +71,11 @@ class SideBar extends React.Component {
           <li><NavLink to='/users'>Usuarios</NavLink></li>
           <li><NavLink to=''>Biblioteca</NavLink></li>
         </ul>
-        {isLoginActive && <Login user={user} close={this.goToUser} />}
+        {isLoginActive && <Login user={user} onClose={this.goToUser} />}
         {showMenuUser && <MenuUser user={user} onClose={this.changeMenuDisplay} />}
       </div>
     )
   }
 }
 
-export default SideBar
+export default withRouter(SideBar)
