@@ -14,7 +14,7 @@ server: http://localhost:3000
 
 # Next steps
 
-- Refactor & design userMenu
+- Create user profile page
 - Add more data in loacalStorage
 - Create loader & add in upload image & update user
 - delete User / deractive
