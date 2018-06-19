@@ -1,8 +1,8 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import ShowUser from '../ShowUser/index.js'
 import Login from '../login/index.js'
+import MenuUser from './menuUser.js'
 
 class SideBar extends React.Component {
   constructor (props) {
@@ -10,13 +10,15 @@ class SideBar extends React.Component {
     this.state = {
       body: props.body,
       activeSideBar: props.activeSideBar,
-      isLoginActive: false
+      isLoginActive: false,
+      showMenuUser: false
     }
     this.activelogin = this.activeLogin.bind(this)
     this.goToUser = this.goToUser.bind(this)
     this.isNewUser = this.isNewUser.bind(this)
     this.changedisplay = this.changedisplay.bind(this)
     this.activeEditUser = this.activeEditUser.bind(this)
+    this.changeMenuDisplay = this.changeMenuDisplay.bind(this)
   }
 
   changedisplay () {
@@ -31,8 +33,8 @@ class SideBar extends React.Component {
   }
 
   activeEditUser () {
-    let user = this.props
-    browserHistory.push(user.url)
+    let {user, history} = this.props
+    history.push(user.url)
   }
 
   activeLogin () {
@@ -49,13 +51,19 @@ class SideBar extends React.Component {
     if (body && !activeSideBar) body.classList.remove('ActiveSideBar')
   }
 
+  changeMenuDisplay () {
+    this.setState({
+      showMenuUser: !this.state.showMenuUser
+    })
+  }
+
   render () {
-    let {isLoginActive} = this.state
+    let {isLoginActive, showMenuUser} = this.state
     let {user} = this.props
     return (
       <div className='SideBar'>
         <a className='ChangeDisplay' onClick={this.changedisplay} />
-        <ShowUser user={user} />
+        <ShowUser user={user} changeMenuDisplay={this.changeMenuDisplay} />
         { !user.id && !user.active && <button onClick={this.goToUser}>Registrarse</button> }
         <ul className='MenuApp'>
           <li><NavLink to='/chars'>Personajes</NavLink></li>
@@ -63,10 +71,11 @@ class SideBar extends React.Component {
           <li><NavLink to='/users'>Usuarios</NavLink></li>
           <li><NavLink to=''>Biblioteca</NavLink></li>
         </ul>
-        { isLoginActive && <Login user={user} close={this.goToUser} /> }
+        {isLoginActive && <Login user={user} onClose={this.goToUser} />}
+        {showMenuUser && <MenuUser user={user} onClose={this.changeMenuDisplay} />}
       </div>
     )
   }
 }
 
-export default SideBar
+export default withRouter(SideBar)

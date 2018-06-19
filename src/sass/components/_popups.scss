@@ -30,6 +30,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.12);
     transition: width 2s, height 2s;
     position: relative;
-    color: $text1Color
+    color: $text1Color;
+    overflow: hidden;
   }
 }

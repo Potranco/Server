@@ -12,6 +12,7 @@ class User {
     this.url = ''
     this.password = ''
     this.callBack = callBack
+    this.isSave = false
     this.save = saveUser
     if (this.id) this.load()
   }
@@ -43,6 +44,18 @@ class User {
       .then(function (response) {
         this.callBack()
       })
+  }
+
+  logout () {
+    this.id = false
+    this.name = 'Invitado'
+    this.email = ''
+    this.avatar = '/img/default_avatar.png'
+    this.active = false
+    this.url = ''
+    this.password = ''
+    this.callBack = () => true
+    this.isSave = false
   }
 }
 

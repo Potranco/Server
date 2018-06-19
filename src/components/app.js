@@ -3,7 +3,8 @@ import { Route, Switch } from 'react-router-dom'
 import SideBar from './sidebar/index.js'
 import Header from './header.js'
 import User from '../user/index.js'
-import EditUser from './editUser/index.js'
+import EditUser from './user/edit.js'
+import UserProfile from './user/profile.js'
 
 const Home = () => <h1>Home</h1>
 const Chars = () => <h1>Personajes</h1>
@@ -29,6 +30,7 @@ class App extends React.Component {
   render () {
     let {user, body, activeSideBar} = this.state
     let editUser = () => <EditUser user={user} />
+    let userProfile = () => <UserProfile user={user} />
     return (
       <div>
         <SideBar
@@ -40,10 +42,11 @@ class App extends React.Component {
           <div className='Content'>
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/user' component={editUser} />
+              <Route path='/user/:id/edit' component={editUser} />
+              <Route path='/user/:id' component={userProfile} />
               <Route path='/chars' component={Chars} />
               <Route path='/campaigns' component={Campaigns} />
-              <Route path='/users' component={Users} />
+              <Route path='/users' component={Users} exact />
               <Route path='/library' component={Library} />
             </Switch>
           </div>
