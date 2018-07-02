@@ -1,6 +1,14 @@
 import React from 'react'
 
 class Header extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      page: props.page,
+      user: props.user || ''
+    }
+  }
+
   render () {
     return (
       <div className='Header'>

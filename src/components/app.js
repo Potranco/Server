@@ -1,12 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import SideBar from './sidebar/index.js'
-import Header from './header.js'
 import User from '../user/index.js'
+
+import Page from './page/index.js'
 import EditUser from './user/edit.js'
 import UserProfile from './user/profile.js'
 
-const Home = () => <h1>Home</h1>
 const Chars = () => <h1>Personajes</h1>
 const Campaigns = () => <h1>Campañas</h1>
 const Users = () => <h1>Usuarios</h1>
@@ -29,6 +29,7 @@ class App extends React.Component {
 
   render () {
     let {user, body, activeSideBar} = this.state
+    let home = () => <Page />
     let editUser = () => <EditUser user={user} />
     let userProfile = () => <UserProfile user={user} />
     return (
@@ -38,10 +39,9 @@ class App extends React.Component {
           body={body}
           user={user} />
         <div className='wrap'>
-          <Header />
           <div className='Content'>
             <Switch>
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={home} />
               <Route path='/user/:id/edit' component={editUser} />
               <Route path='/user/:id' component={userProfile} />
               <Route path='/chars' component={Chars} />
