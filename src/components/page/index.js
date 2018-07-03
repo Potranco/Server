@@ -1,24 +1,26 @@
 import React from 'react'
 import Header from '../header/index.js'
+import Pages from './pages/index.js'
 
 class Page extends React.Component {
   constructor (props) {
     super(props)
+    let page = props.page || 'home'
     this.state = {
-      page: props.page || '',
+      contentPage: Pages[page](props.user),
+      header: '',
       user: props.user || false
     }
-    this.createHeader = this.createHeader.bind(this)
-  }
-
-  createHeader (page) {
-    return <Header page={page} />
   }
 
   render () {
+    let {contentPage} = this.state
     return (
-      <div>
-        { this.createHeader(this.state.page) }
+      <div className='wrap'>
+        <Header />
+        <div className='Content'>
+          {contentPage}
+        </div>
       </div>
     )
   }
