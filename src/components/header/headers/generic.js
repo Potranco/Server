@@ -1,10 +1,9 @@
 import React from 'react'
 
-class Header extends React.Component {
+class Generic extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      page: props.page || 'Home',
       user: props.user || ''
     }
   }
@@ -27,4 +26,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header
+export default Generic
