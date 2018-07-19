@@ -27,8 +27,8 @@ class App extends React.Component {
   render () {
     let {user, body, activeSideBar} = this.state
     let home = () => <Page />
-    let editUser = () => <Page page='editProfile' user={user} />
-    let userProfile = () => <Page page='userProfile' user={user} />
+    let editUser = () => <Page page='editProfile' user={user} currentUser={user} />
+    let userProfile = ({match}) => <Page page='userProfile' currentUser={user} userId={match.params.id} />
     return (
       <div>
         <SideBar

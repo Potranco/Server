@@ -1,5 +1,5 @@
 import React from 'react'
-import Headers from '../header/headers/index.js'
+import Headers from '../headers/index.js'
 import Pages from './pages/index.js'
 
 class Page extends React.Component {
@@ -7,8 +7,8 @@ class Page extends React.Component {
     super(props)
     let page = props.page || 'home'
     this.state = {
-      contentPage: Pages[page](props.user),
-      header: Headers[page](props.user),
+      contentPage: Pages[page](props),
+      header: Headers[page](props),
       user: props.user || false
     }
   }

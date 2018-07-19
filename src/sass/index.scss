@@ -105,6 +105,11 @@ body{
       cursor: pointer;
     }
   }
+  .Menu {
+    display:block;margin-top:10px;
+    @include m-text;
+    div {display: inline-block; margin-right: 20px;padding: 10px;cursor: pointer}
+  }
 }
 
 .Login {

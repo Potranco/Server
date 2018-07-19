@@ -1,8 +1,8 @@
 import React from 'react'
-import Input from '../forms/input.js'
-import UpdateImage from '../forms/updateImage.js'
-import {isEmail, BoxContent} from '../utils/index.js'
-import ShowUser from '../ShowUser/index.js'
+import Input from '../../../forms/input.js'
+import UpdateImage from '../../../forms/updateImage.js'
+import {isEmail, BoxContent} from '../../../utils/index.js'
+import ShowUser from '../../../ShowUser/index.js'
 
 class EditUser extends React.Component {
   constructor (props) {
