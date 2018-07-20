@@ -14,10 +14,17 @@ server: http://localhost:3000
 
 # Next steps
 
-- Create user profile page
+- Create char
+  - Race
+  - Class
+  - Name, family, god, ...
+  - Stats
+  - Habilities
+  - Dotes
+  - ...
 - Add more data in loacalStorage
 - Create loader & add in upload image & update user
-- delete User / deractive
+- delete User / desactive
 - Add remember me (localStorage basic no tokken)
 - Create list User
   - Control pages in unique page

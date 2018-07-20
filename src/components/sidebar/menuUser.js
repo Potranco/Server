@@ -47,6 +47,8 @@ class MenuUser extends React.Component {
         <ul>
           <li onClick={this.goToUserProfile}>Tu perfil</li>
           <li onClick={this.goToEditUser}>Editar perfil</li>
+          <li>Personajes</li>
+          <li>Campañas</li>
           <li onClick={this.logout}>Cerrar sesión</li>
         </ul>
       </Dialog>

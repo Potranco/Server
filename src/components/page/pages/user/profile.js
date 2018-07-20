@@ -2,10 +2,10 @@ import React from 'react'
 
 class UserProfile extends React.Component {
   render () {
-    let { email, password, avatar, name, active } = this.props.user
     return (
       <div className='UserProfile'>
-        User {email} {password} {avatar} {name} {active}
+        <h2>Personajes</h2>
+        <h2>Campañas</h2>
       </div>
     )
   }
