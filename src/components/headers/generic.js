@@ -12,7 +12,7 @@ class Generic extends React.Component {
     return (
       <div className='Header'>
         <h1>Personajes</h1>
-        <div className='CreateRandom'>Crear personaje</div>
+        <div className='CreateRandom'>Nuevo personaje</div>
         <div className='CharList'>
           <ul>
             <li>

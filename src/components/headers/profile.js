@@ -13,6 +13,7 @@ class Profile extends React.Component {
     }
     this.isCurrentUser = this.isCurrentUser.bind(this)
     this.goToEditUser = this.goToEditUser.bind(this)
+    this.goToUserProfile = this.goToUserProfile.bind(this)
   }
 
   componentDidMount () {
@@ -24,6 +25,11 @@ class Profile extends React.Component {
     let {currentUser, user} = this.state
     return currentUser.id === user.id
   }
+  goToUserProfile () {
+    let {currentUser} = this.state
+    let {history} = this.props
+    history.push(currentUser.url)
+  }
   goToEditUser () {
     let {currentUser} = this.state
     let {history} = this.props
@@ -33,10 +39,11 @@ class Profile extends React.Component {
     let {user} = this.state
     return (
       <div className='Header'>
+        <div className='CreateRandom'>Nuevo personaje</div>
         <ShowUser user={user} />
         { this.isCurrentUser() &&
           <div className='Menu'>
-            <div>Perfil</div>
+            <div onClick={this.goToUserProfile}>Perfil</div>
             <div onClick={this.goToEditUser}>Editar</div>
             <div>Personajes</div>
             <div>Campañas</div>
