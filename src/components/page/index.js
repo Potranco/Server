@@ -18,9 +18,7 @@ class Page extends React.Component {
     return (
       <div className='wrap'>
         {header}
-        <div className='Content'>
-          {contentPage}
-        </div>
+        {contentPage}
       </div>
     )
   }
