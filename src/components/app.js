@@ -13,11 +13,14 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.handlerForceUpdate = this.handlerForceUpdate.bind(this)
+    let user = new User()
+    user.events.on('onLoad', this.handlerForceUpdate)
     this.state = {
-      user: (props.userId) ? new User(props.userId, this.handlerForceUpdate) : new User(null, this.handlerForceUpdate),
+      user: user,
       activeSideBar: props.activeSideBar,
       body: props.body
     }
+    this.state.user.load(props.userId || null)
   }
 
   handlerForceUpdate () {

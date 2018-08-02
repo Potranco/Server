@@ -1,26 +1,27 @@
 import fetch from 'isomorphic-fetch'
 import saveUser from './save.js'
 import config from './config.js'
+import Events from '../components/events/index.js'
 
 class User {
-  constructor (userId = false, callBack = () => true) {
-    this.id = userId
+  constructor () {
+    this.id = false
     this.name = 'Invitado'
     this.email = ''
     this.avatar = '/img/default_avatar.png'
     this.active = false
     this.url = ''
     this.password = ''
-    this.callBack = callBack
     this.isSave = false
     this.save = saveUser
-    if (this.id) this.load()
+    this.events = new Events()
   }
 
-  load () {
+  load (id) {
     let header = {
       method: 'GET'
     }
+    this.id = id || ''
     const url = config.host + this.id
     fetch(url, header)
       .then((response) => response.ok && response.json())
@@ -31,7 +32,7 @@ class User {
         this.email = data.email
         this.password = data.password
         this.url = '/user/' + data._id
-        this.callBack()
+        this.events.emit('onLoad', data)
       })
   }
 
@@ -42,7 +43,7 @@ class User {
     const url = config.host + this.id
     fetch(url, header)
       .then(function (response) {
-        this.callBack()
+        this.events.emit('onDelete', true)
       })
   }
 
@@ -54,8 +55,8 @@ class User {
     this.active = false
     this.url = ''
     this.password = ''
-    this.callBack = () => true
     this.isSave = false
+    this.events.removeAll()
   }
 }
 
