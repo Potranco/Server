@@ -8,7 +8,7 @@ class Backweb extends React.Component {
         <Header>
           <h1>Backweb</h1>
         </Header>
-        <div>Razas</div>
+        <div>Backweb</div>
       </div>
     )
   }
