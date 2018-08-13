@@ -74,7 +74,7 @@ class EditUser extends React.Component {
   render () {
     let { email, password, avatar, name, active, error, message } = this.state
     return (
-      <div className='EditUser'>
+      <div className='Content EditUser'>
         <BoxContent title='edita tu perfil' className='BoxContent Middle'>
           {!!message && <div className='Message'>{message}</div>}
           {!!error && <div className='ErrorMessage'>{error}</div>}

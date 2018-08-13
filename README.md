@@ -13,7 +13,7 @@ Validate code: npm run validate
 server: http://localhost:3000
 
 # Next steps
-
+- Create Table Races
 - Create char
   - Race
   - Class

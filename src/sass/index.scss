@@ -147,4 +147,10 @@ body{
   }
 }
 
+.SelectRace {
+  position: relative;
+  .RaceExplanation {display:fixed;top:50px;right:20px}
+  .Races {}
+}
+
 .NoDisplay {display:none;}

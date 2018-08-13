@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 class Generic extends React.Component {
   constructor (props) {
@@ -6,13 +7,19 @@ class Generic extends React.Component {
     this.state = {
       user: props.user || ''
     }
+    this.goToCreateChar = this.goToCreateChar.bind(this)
+  }
+
+  goToCreateChar () {
+    let {history} = this.props
+    history.push('/char/create')
   }
 
   render () {
     return (
       <div className='Header'>
         <h1>Personajes</h1>
-        <div className='CreateRandom'>Nuevo personaje</div>
+        <div className='CreateRandom' onClick={this.goToCreateChar}>Nuevo personaje</div>
         <div className='CharList'>
           <ul>
             <li>
@@ -26,4 +33,4 @@ class Generic extends React.Component {
   }
 }
 
-export default Generic
+export default withRouter(Generic)
