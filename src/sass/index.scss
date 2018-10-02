@@ -70,7 +70,7 @@ body{
   }
 
   .MenuApp {
-    font-size: 16px;
+    font-size: $fontSizeL;
     .Selected:after{
       width:calc(100% + 40px);
     }
@@ -82,7 +82,7 @@ body{
   .Avatar {border-radius:25px;min-width:40px;height:40px;background-position:center;background-size:cover;}
   p {
     padding-left: 20px;width:170px;line-height:20px;
-    strong {font-size:16px;display:block}
+    strong {font-size:$fontSizeL;display:block}
     span {opacity:0.5; width:180px}
   }
 }
@@ -148,9 +148,37 @@ body{
 }
 
 .SelectRace {
-  position: relative;
-  .RaceExplanation {display:fixed;top:50px;right:20px}
-  .Races {}
+  width:100%;
+  h2 {margin-bottom: 20px;}
+  .Select {
+    width: 100%; height: 100%;
+    .MenuRaces {
+      width:100%; position:relative;height:75px;margin-bottom:20px;padding:0px 50px;
+      .RaceNavigator {border:1px solid #f00;position: absolute;top:0px;left:0px;right:0px;bottom:0px;
+        .Prev {width:50px;height:100%;float:left;border:1px solid #f0f}
+        .Next {width:50px;height:100%;float:right;border:1px solid #0f0}
+      }
+      ul {display: inline-flex;;overflow:hidden;white-space: nowrap;margin:0px;padding:5px}
+      li {
+        display: flex; align-items: center; justify-content: center;margin:0px 5px;position: relative;width: 75px;height: 65px;
+        overflow: hidden;border: 1px solid #ccc; border-radius: 5px; background: $color4; cursor:pointer;
+        img {width:100%;-webkit-transition: width 300ms; transition: width 300ms;text-align: center;}
+        &:hover img {width: 115%;}
+      }
+    }
+    .RaceExplanation {}
+    .RaceSelected {
+      .Image {
+        max-width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0px 0px 30px 30px #ebeced;
+        overflow: hidden;
+        img {z-index: -2;position: relative;}
+      }
+    }
+  }
 }
 
 .NoDisplay {display:none;}
