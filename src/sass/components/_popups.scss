@@ -3,7 +3,7 @@
 
 .Popup {
   position:fixed;top:0px;left:0px;right:0px;bottom:0px;display:flex;align-items:center;justify-content:center;z-index: 2000;
-  .PopupBackground {position::fixed;background: rgba(0,0,0,0.3); width:100%;height:100%;z-index: -1;transition: background 1s}
+  .PopupBackground {position::fixed;background: rgba(0,0,0,0.5); width:100%;height:100%;z-index: -1;transition: background 1s}
   h1, h2, h3, h4 ,h5 ,h6 {font-size:$fontSizeL; color:$text1Color;margin: 0px 0px 20px 0px;text-align: center;}
   .PopupContent {
     background: $backgroundSecondary;
@@ -22,7 +22,7 @@
 
 .Dialog {
   position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index: 2000;
-  .PopupBackground {position::fixed;background: rgba(0,0,0,0.3); width:100%;height:100%;z-index: -1;transition: background 1s}
+  .PopupBackground {position::fixed;background: rgba(0,0,0,0.5); width:100%;height:100%;z-index: -1;transition: background 1s}
   .PopupContent {
     background: $backgroundSecondary;
     padding: 10px;
