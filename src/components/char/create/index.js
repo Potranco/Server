@@ -20,18 +20,13 @@ class CreateChar extends React.Component {
     let response = null
     let {char} = this.state
     switch (step) {
-      case 0:
-        response = <SelectRace save={this.saveData} char={char} />
+      case 0: response = <SelectRace save={this.saveData} char={char} />
         break
-      case 1:
-        response = <SelectSex save={this.saveData} char={char} />
+      case 1: response = <SelectSex save={this.saveData} char={char} />
         break
-      case 2:
-        response = <ClassChar save={this.saveData} char={char} />
+      case 2: response = <ClassChar save={this.saveData} char={char} />
         break
-      default:
-        response = <h1>Next Step en construccion</h1>
-        break
+      default: response = <h1>Next Step en construccion</h1>
     }
     return response
   }
@@ -44,8 +39,6 @@ class CreateChar extends React.Component {
   }
 
   render () {
-    let {char} = this.state
-    console.log('Personaje', char)
     return (
       <div className='Content createChar'>
         {this.loadStep(this.state.step)}
