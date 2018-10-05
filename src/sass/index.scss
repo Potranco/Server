@@ -147,10 +147,10 @@ body{
   }
 }
 
-.SelectRace {
+.SelectRace, .SelectSex, .SelectClassChar {
   width:100%;
-  .ListRaces {display: flex;flex-direction: row;flex-wrap: wrap;}
-  .Race {
+  .ListRaces, .ListSex, .ListClassChar {display: flex;flex-direction: row;flex-wrap: wrap;}
+  .Race, .Sex, .ClassChar {
     width:20%;height:250px;padding:0px;overflow: hidden;min-width:200px;position: relative;cursor:pointer;
     h3 {
       position: absolute;
@@ -169,6 +169,7 @@ body{
     img {width:100%;min-height:250px;height:auto;transition: width 0.5s;}
     img:hover {width:130%}
   }
+  .ClassChar {width:200px}
   .RaceSelected {
     width: 450px;background-size:cover !important;
     h3 {
@@ -179,7 +180,7 @@ body{
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006e4593', endColorstr='#006e4593',GradientType=1 );
     }
     .Description {background: rgba(0, 0, 0, 0.7);padding: 10px;color:$text2Color;}
-    button {font-size:$fontSizeM}
+    button {font-size:$fontSizeM; padding: 8px 18px}
   }
 }
 

@@ -16,6 +16,8 @@ server: http://localhost:3000
 - Create Table Races
 - Create char
   - Race
+    - Create collection in DDBB
+  - Sex
   - Class
   - Name, family, god, ...
   - Stats
