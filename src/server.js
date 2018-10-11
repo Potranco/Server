@@ -7,7 +7,7 @@ import config from './configServer.js'
 
 const server = express()
 const {url, port} = config
-const dbUrl = dbConfig.host + ':' + dbConfig.port + '/' + dbConfig.dbName
+const dbUrl = dbConfig.url()
 
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())

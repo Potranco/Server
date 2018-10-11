@@ -1,7 +1,13 @@
-const config = {
-  host: 'mongodb://localhost',
-  port: '27017',
-  dbName: 'projectd20'
+class Config {
+  constructor () {
+    this.host = 'mongodb://localhost'
+    this.port = '27017'
+    this.dbName = 'projectd20'
+  }
+
+  url () {
+    return this.host + ':' + this.port + '/' + this.dbName
+  }
 }
 
-export default config
+export default new Config()

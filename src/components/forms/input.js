@@ -17,7 +17,7 @@ class Input extends React.Component {
 
   handleChange (event) {
     let { onChange } = this.state
-    onChange(event.target.value)
+    onChange(event.target.value, event.target.name)
   }
 
   handleOnBlur (event) {

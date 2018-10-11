@@ -12,17 +12,17 @@ export default class DBMethods {
   }
 
   find (req, res, next) {
-    this.model.find({active: true}, function (err, users) {
+    this.model.find({active: true}, function (err, data) {
       if (err) return next(err)
-      res.json(users)
+      res.json(data)
     })
   }
 
   findById (req, res, next) {
-    let userId = req.params.id
-    this.model.findById(userId, function (err, user) {
+    let id = req.params.id
+    this.model.findById(id, function (err, data) {
       if (err) return next(err)
-      res.json(user)
+      res.json(data)
     })
   }
 
@@ -33,9 +33,9 @@ export default class DBMethods {
       })
     }
 
-    this.model.create(req.body, function (err, newUser) {
+    this.model.create(req.body, function (err, newData) {
       if (err) return next(err)
-      return res.json(newUser)
+      return res.json(newData)
     })
   }
 

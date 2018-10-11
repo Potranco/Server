@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Backweb from './backweb/index.js'
+import Backweb from '../backweb/index.js'
 import SideBar from './sidebar/index.js'
 import User from '../user/index.js'
 import Page from './page/index.js'
@@ -52,7 +52,7 @@ class App extends React.Component {
             */
 
           /* BACKWEB */
-          <Route exact path='/backweb' component={backweb} />
+          <Route path='/backweb' component={backweb} />
         </Switch>
       </div>
     )

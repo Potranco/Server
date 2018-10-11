@@ -20,10 +20,10 @@ Ellos prefieren la belleza a través de su habilidad, transformando la naturalez
 Suelen ser también muy pesimistas ante todo, esperan lo peor y lo expresan continuamente. Debido a ello siempre están preparados y reaccionan rápidamente ademas de asegurarse de que todo este en orden con las armas, la comida, rutas de escape alternativas o trampas para enemigos potenciales.
 Los enanos tienden a mantener su palabra, a cualquier coste.`,
           id: '1',
+          favoriteClasses: ['Guerrero'],
+          size: 'mediano',
+          velocity: 30,
           modificators: {
-            class: 'Guerrero',
-            size: 'mediano',
-            velocity: 30,
             salvation: {
               magic: 2,
               poison: 2
