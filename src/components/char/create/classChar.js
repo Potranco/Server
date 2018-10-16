@@ -126,7 +126,7 @@ Los enanos tienden a mantener su palabra, a cualquier coste.`,
 
   handleClickSave () {
     let {char, classSelected} = this.state
-    char.class = classSelected
+    char.class.push(classSelected)
     this.state.save(char)
   }
 

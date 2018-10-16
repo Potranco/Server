@@ -6,7 +6,10 @@ const raceModel = new Schema({
   image: { type: String },
   active: { type: Boolean },
   description: { type: String },
-  favotiteClasses: { type: Array },
+  favotiteClasses: [{
+    sex: { type: String },
+    class: { type: String }
+  }],
   size: { type: String },
   velocity: { type: Number },
   languages: { type: Array },
@@ -21,7 +24,7 @@ const raceModel = new Schema({
   },
   vision: [{
     distance: {type: Number},
-    type: { type: String }
+    visionType: { type: String }
   }],
   statistics: {
     FUE: {type: Number},
@@ -35,7 +38,7 @@ const raceModel = new Schema({
     REF: {type: Number},
     FOR: {type: Number},
     VOL: {type: Number},
-    type: [
+    salvationType: [
       {
         id: { type: String },
         base: {type: Number}
@@ -57,14 +60,16 @@ const raceModel = new Schema({
     whenCreate: {type: Number},
     list: [
       {
-        idDote: {type: String}
+        id: {type: String},
+        value: {type: Number}
       }
     ]
   },
   abilities: {
     whenCreate: {type: Number},
     list: [{
-      idAbility: {type: String}
+      id: {type: String},
+      value: {type: Number}
     }]
   },
   spells: [{

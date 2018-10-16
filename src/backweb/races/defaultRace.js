@@ -2,8 +2,11 @@ export default {
   name: 'PruebasEnano',
   image: 'https://i.pinimg.com/564x/6a/81/a1/6a81a19473eef49e82f5a79106a1b27c.jpg',
   active: true,
-  description: 'test',
-  favotiteClasses: ['Guerrero'],
+  description: 'Los enanos son orgullosos, taciturnos y bastante inflexibles, también son conocidos por ser rencorosos y la avaricia por el oro les mueve. No les gusta los extraños y mas si no son enanos, piensan que vienen a robar sus tesoros, en especial los humanos y medianos.',
+  favotiteClasses: [{
+    sex: '',
+    class: 'Guerrero'
+  }],
   size: 'Mediano',
   velocity: 30,
   languages: [],
@@ -18,7 +21,7 @@ export default {
   },
   vision: [
     {
-      type: 'monocromática',
+      visionType: 'monocromática',
       distance: 20
     }
   ],
@@ -34,7 +37,7 @@ export default {
     REF: 0,
     FOR: 0,
     VOL: 0,
-    type: [
+    salvationType: [
       {
         id: 'magic',
         base: 2

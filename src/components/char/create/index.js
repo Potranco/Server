@@ -9,7 +9,7 @@ class CreateChar extends React.Component {
     super(props)
     this.state = {
       step: parseInt(props.step || 0),
-      char: new Char()
+      char: props.char || new Char()
     }
 
     this.loadStep = this.loadStep.bind(this)
@@ -35,6 +35,7 @@ class CreateChar extends React.Component {
     let {step} = this.state
     let charChanged = char || this.state.char
     step++
+    console.log('Char:', charChanged)
     this.setState({step: step, char: charChanged})
   }
 

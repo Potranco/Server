@@ -30,8 +30,8 @@ class SelectRace extends React.Component {
   handleClickSave () {
     let {char, raceSelected, races} = this.state
     let race = races.find((race) => race._id === raceSelected)
+    console.log(race)
     char = this.addRaceChar(race, char)
-    console.log('Add race in char:', char)
     this.state.save(char)
   }
 
