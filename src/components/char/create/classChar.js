@@ -15,8 +15,31 @@ class ClassChar extends React.Component {
         {
           image: 'https://i.pinimg.com/564x/0a/d1/c4/0ad1c4f2f78c639f0291232ae9e81d83.jpg',
           title: 'Barbaro',
-          description: `Vienen tanto de los gélidos yermos del norte como de las infernales junglas del sur y llevan la temeridad como su estandarte. En las zonas civilizadas se les conoce como "Bárbaros" y se les crítica por su tendencia al caos y por ser dados a cometer atrocidades. Sin embargo, han demostrado su inestimable valor como luchadores a sus aliados y su terrible poder a aquellos enemigos que los subestimaron.`,
-          id: '1'
+          description: `El Bárbaro es un gran combatiente de primera línea, de hecho no hay nadie que pueda igualar su resistencia en combate. Esta resistencia se ve incrementada con la aptitud de furia del Bárbaro que es lo mas característico de esta clase, pudiendo hacer trizas a sus enemigos en un corto espacio de tiempo. También son buenos batidores gracias a sus habilidades, su velocidad y su sentido de las trampas.`,
+          id: '1',
+          life: '12d',
+          alineamiento: {
+            legal: false
+          },
+          abilities: {
+            change: 4,
+            mod: 'INT',
+            list: ['Artesanía', 'Escuchar', 'Intimidar', 'Montar', 'Nadar', 'Supervivencia', 'Trato con animales', 'Trepar']
+          },
+          arms: [],
+          armor: [],
+          spells: [
+            {
+              id: 'furia',
+              level: 0,
+              perDay: 1
+            },
+            {
+              id: 'movimiento rápido',
+              level: 0,
+              perDay: 1
+            }
+          ]
         },
         {
           image: 'https://i.pinimg.com/564x/73/e5/40/73e540b45d8cac47f4f1603faf086dc1.jpg',
