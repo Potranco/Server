@@ -1,22 +1,27 @@
 export default {
-  name: 'Pruebas',
-  image: 'test',
+  name: 'PruebasEnano',
+  image: 'https://i.pinimg.com/564x/6a/81/a1/6a81a19473eef49e82f5a79106a1b27c.jpg',
   active: true,
   description: 'test',
-  favotiteClasses: [],
-  size: 'test',
-  velocity: 0,
+  favotiteClasses: ['Guerrero'],
+  size: 'Mediano',
+  velocity: 30,
   languages: [],
   levelAjustment: 0,
   alignment: {
     legal: false,
     neutralEtic: false,
-    caos: false,
-    bueno: false,
+    chaos: false,
+    good: false,
     neutralMoral: false,
-    malo: false
+    bad: false
   },
-  vision: [],
+  vision: [
+    {
+      type: 'monocromática',
+      distance: 20
+    }
+  ],
   statistics: {
     FUE: 0,
     CON: 0,
@@ -28,26 +33,63 @@ export default {
   salvation: {
     REF: 0,
     FOR: 0,
-    VOL: 0
+    VOL: 0,
+    type: [
+      {
+        id: 'magic',
+        base: 2
+      },
+      {
+        id: 'venom',
+        base: 2
+      }
+    ]
   },
   attack: {
-    mele: {
-      impact: 0,
-      damage: 0
-    },
-    distance: {
-      impact: 0,
-      damage: 0
-    },
-    race: []
+    mele: 0,
+    distance: 0,
+    race: [
+      {
+        id: 'kobolds',
+        attactType: {
+          mele: 1,
+          distance: 1
+        }
+      },
+      {
+        id: 'goblinoides',
+        attactType: {
+          mele: 1,
+          distance: 1
+        }
+      }
+    ]
   },
   dotes: {
     whenCreate: 0,
-    list: []
+    list: [
+      {
+        id: 'Usar objeto mágico',
+        value: -2
+      }
+    ]
   },
   abilities: {
     whenCreate: 0,
-    list: []
+    list: [
+      {
+        id: 'minería',
+        value: 2
+      },
+      {
+        id: 'detectar trampas',
+        value: 2
+      },
+      {
+        id: 'intuir direccion',
+        value: 2
+      }
+    ]
   },
   spells: [],
   others: ''

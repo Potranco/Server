@@ -12,6 +12,7 @@ class NewRace extends React.Component {
     }
 
     this.handleChangeText = this.handleChangeText.bind(this)
+    this.saveRace = this.saveRace.bind(this)
   }
 
   handleChangeText (value, key) {
@@ -39,9 +40,14 @@ class NewRace extends React.Component {
   }
 
   render () {
-    let {race} = this.state
+    // let {race} = this.state
     return (
       <BoxContent title='Nueva Raza' className='BoxContent Middle'>
+        <button onClick={this.saveRace} >Crear</button>
+        <b>Raza</b>
+        <br />
+        {JSON.stringify(DefaultRace, null, 2)}
+        {/*
         <Checkbox label='activa' name='active' value={race.active} onChange={this.handleChangeText} />
         <Input type='text' required label='nombre' name='name' value={race.name} onChange={this.handleChangeText} />
         <Input type='text' required label='imagen' name='image' value={race.image} onChange={this.handleChangeText} />
@@ -64,6 +70,7 @@ class NewRace extends React.Component {
         <b>abilities</b>
         <b>spells</b>
         <b>others</b>
+        */}
       </BoxContent>
     )
   }

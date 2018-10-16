@@ -14,10 +14,10 @@ const raceModel = new Schema({
   alignment: {
     legal: { type: Boolean },
     neutralEtic: { type: Boolean },
-    caos: { type: Boolean },
-    bueno: { type: Boolean },
+    chaos: { type: Boolean },
+    good: { type: Boolean },
     neutralMoral: { type: Boolean },
-    malo: { type: Boolean }
+    bad: { type: Boolean }
   },
   vision: [{
     distance: {type: Number},
@@ -34,39 +34,41 @@ const raceModel = new Schema({
   salvation: {
     REF: {type: Number},
     FOR: {type: Number},
-    VOL: {type: Number}
-  },
-  attack: {
-    mele: {
-      impact: {type: Number},
-      damage: {type: Number}
-    },
-    distance: {
-      impact: {type: Number},
-      damage: {type: Number}
-    },
-    race: [
+    VOL: {type: Number},
+    type: [
       {
-        idRace: {type: Number}
+        id: { type: String },
+        base: {type: Number}
       }
     ]
+  },
+  attack: {
+    mele: {type: Number},
+    distance: {type: Number},
+    race: [{
+      id: {type: String},
+      attactType: {
+        mele: {type: Number},
+        distance: {type: Number}
+      }
+    }]
   },
   dotes: {
     whenCreate: {type: Number},
     list: [
       {
-        idDote: {type: Number}
+        idDote: {type: String}
       }
     ]
   },
   abilities: {
     whenCreate: {type: Number},
     list: [{
-      idAbility: {type: Number}
+      idAbility: {type: String}
     }]
   },
   spells: [{
-    id: {type: Number},
+    id: {type: String},
     level: {type: Number},
     perDay: {type: Number}
   }],
