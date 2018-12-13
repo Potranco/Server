@@ -27,7 +27,7 @@ class SideBar extends React.Component {
   }
 
   goToUser () {
-    let user = this.props
+    let {user} = this.props
     if (this.isNewUser() && user.id) this.activeEditUser()
     else this.activelogin()
   }
@@ -71,7 +71,7 @@ class SideBar extends React.Component {
           <li><NavLink to='/users'>Usuarios</NavLink></li>
           <li><NavLink to=''>Biblioteca</NavLink></li>
         </ul>
-        {isLoginActive && <Login user={user} onClose={this.goToUser} />}
+        {isLoginActive && <Login user={user} onLogin={this.activeLogin.bind(this)} onClose={this.goToUser} />}
         {showMenuUser && <MenuUser user={user} onClose={this.changeMenuDisplay} />}
       </div>
     )

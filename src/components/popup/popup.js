@@ -16,7 +16,7 @@ class Popup extends React.Component {
     return (
       <div className='Popup'>
         <div className='PopupBackground' onClick={onClose} />
-        <div className={className} style={style}>
+        <div className={className} style={{style}}>
           <h3>{title}</h3>
           <div className='PopupClose' onClick={onClose} />
           { this.props.children }

@@ -16,8 +16,8 @@ class ClassChar extends React.Component {
           image: 'https://i.pinimg.com/564x/0a/d1/c4/0ad1c4f2f78c639f0291232ae9e81d83.jpg',
           title: 'Barbaro',
           description: `El Bárbaro es un gran combatiente de primera línea, de hecho no hay nadie que pueda igualar su resistencia en combate. Esta resistencia se ve incrementada con la aptitud de furia del Bárbaro que es lo mas característico de esta clase, pudiendo hacer trizas a sus enemigos en un corto espacio de tiempo. También son buenos batidores gracias a sus habilidades, su velocidad y su sentido de las trampas.`,
-          id: '1',
-          life: '12d',
+          _id: '1',
+          life: 12,
           alineamiento: {
             legal: false
           },

@@ -12,13 +12,16 @@ class Login extends React.Component {
       email: props.user.email || '',
       password: '',
       error: '',
-      onClose: props.onClose
+      onClose: props.onClose,
+      onLogin: props.onLogin
     }
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
+    this.handleChangePassword = this.handleChangePassword.bind(this)
+    this.activeUser = this.activeUser.bind(this)
   }
 
   activeUser () {
-    let {user, onClose} = this.props
+    let {user, onLogin} = this.props
     let {email, password} = this.state
     if (!email && !password) return this.setState({error: 'Datos incompletos'})
     if (!isEmail(email)) return this.setState({error: 'Email incorrecto'})
@@ -30,7 +33,7 @@ class Login extends React.Component {
         if (response) {
           var localStorage = window.localStorage
           localStorage.setItem('userId', user.id)
-          return onClose()
+          return onLogin()
         } else {
           this.setState({error: 'Los datos de registro/login son erroneos'})
         }
@@ -51,13 +54,13 @@ class Login extends React.Component {
     let {error, onClose, email, password} = this.state
     return (
       <Popup title='Acceso / Registro' onClose={onClose}>
-        <form action='#' className='Login'>
+        <form action='#' className='Login' onSubmit={this.activeUser}>
           {!!error && <div className='ErrorMessage'>{error}</div>}
           <Input type='email' value={email} required label='email' name='email' placeholder='ejemplo@email.com'
-            onChange={this.handleChangeEmail.bind(this)} />
+            onChange={this.handleChangeEmail} />
           <Input type='password' value={password} required label='contraseña' name='email'
-            onChange={this.handleChangePassword.bind(this)} />
-          <button type='button' onClick={this.activeUser.bind(this)}>Aceptar</button>
+            onChange={this.handleChangePassword} />
+          <button type='submit' onClick={this.activeUser}>Aceptar</button>
         </form>
       </Popup>
     )
