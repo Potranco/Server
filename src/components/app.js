@@ -5,7 +5,8 @@ import SideBar from './sidebar/index.js'
 import User from '../user/index.js'
 import Page from './page/index.js'
 
-const Chars = () => <h1>Personajes</h1>
+console.log(Page)
+
 const Campaigns = () => <h1>Campañas</h1>
 const Users = () => <h1>Usuarios</h1>
 const Library = () => <h1>Biblioteca</h1>
@@ -30,8 +31,10 @@ class App extends React.Component {
     let home = () => <Page />
     let editUser = () => <Page page='editProfile' user={user} currentUser={user} />
     let userProfile = ({match}) => <Page page='userProfile' currentUser={user} userId={match.params.id} />
-    let createChar = () => <Page page='createChar' currentUser={user} step='0' />
+    let newChar = () => <Page page='createChar' currentUser={user} step='0' />
+    let list = <Page page='chars' />
     let backweb = () => <Backweb />
+
     return (
       <div>
         <SideBar
@@ -42,14 +45,14 @@ class App extends React.Component {
           <Route exact path='/' component={home} />
           <Route path='/user/:id/edit' component={editUser} />
           <Route path='/user/:id' component={userProfile} />
-          <Route path='/char/create' component={createChar} />
+          <Route path='/char/create' component={newChar} />
+          <Route path='/chars/' component={list} />
 
           /*
-          <Route path='/chars' component={Chars} />
           <Route path='/campaigns' component={Campaigns} />
           <Route path='/users' component={Users} exact />
           <Route path='/library' component={Library} />
-            */
+          */
 
           /* BACKWEB */
           <Route path='/backweb' component={backweb} />

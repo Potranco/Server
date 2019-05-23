@@ -5,9 +5,9 @@ import config from './config.js'
 class User {
   constructor (userId = false, callBack = () => true) {
     this.id = userId
-    this.name = 'Invitado'
+    this.name = config.default.name
     this.email = ''
-    this.avatar = '/img/default_avatar.png'
+    this.avatar = config.default.image
     this.active = false
     this.url = ''
     this.password = ''
@@ -30,7 +30,7 @@ class User {
         this.avatar = data.avatar
         this.email = data.email
         this.password = data.password
-        this.url = '/user/' + data._id
+        this.url = config.directory + data._id
         this.callBack()
       })
   }
@@ -48,9 +48,9 @@ class User {
 
   logout () {
     this.id = false
-    this.name = 'Invitado'
+    this.name = config.default.name
     this.email = ''
-    this.avatar = '/img/default_avatar.png'
+    this.avatar = config.default.image
     this.active = false
     this.url = ''
     this.password = ''

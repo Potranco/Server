@@ -15,10 +15,7 @@ const save = function () {
 
   let header = {
     method: '',
-    headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    },
+    headers: config.headerSave,
     body: JSON.stringify(data)
   }
   const url = this.id ? config.host + this.id : config.host
@@ -33,12 +30,12 @@ const save = function () {
       this.email = data.email
       this.active = data.active
       this.avatar = data.avatar
-      this.url = '/user/' + data._id
+      this.url = config.directory + data._id
       this.callBack()
       return true
     })
     .catch((error) => {
-      console.log('User.save error: ', error)
+      console.error('User.save error: ', error)
       return false
     })
 }

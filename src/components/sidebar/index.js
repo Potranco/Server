@@ -64,7 +64,7 @@ class SideBar extends React.Component {
       <div className='SideBar'>
         <a className='ChangeDisplay' onClick={this.changedisplay} />
         <ShowUser user={user} changeMenuDisplay={this.changeMenuDisplay} />
-        { !user.id && !user.active && <button onClick={this.goToUser}>Registrarse</button> }
+        {!user.id && !user.active && <button onClick={this.goToUser}>Registrarse</button>}
         <ul className='MenuApp'>
           <li><NavLink to='/chars'>Personajes</NavLink></li>
           <li><NavLink to='/campaigns'>Campañas</NavLink></li>

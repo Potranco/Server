@@ -20,7 +20,8 @@ class Login extends React.Component {
     this.activeUser = this.activeUser.bind(this)
   }
 
-  activeUser () {
+  activeUser (event) {
+    event.preventDefault()
     let {user, onLogin} = this.props
     let {email, password} = this.state
     if (!email && !password) return this.setState({error: 'Datos incompletos'})
@@ -31,15 +32,18 @@ class Login extends React.Component {
     user.save()
       .then((response) => {
         if (response) {
-          var localStorage = window.localStorage
+          let localStorage = window.localStorage
           localStorage.setItem('userId', user.id)
           return onLogin()
         } else {
+          user.email = ''
+          user.password = ''
           this.setState({error: 'Los datos de registro/login son erroneos'})
         }
       })
-      .catch(function (error) {
-        console.log(error)
+      .catch(() => {
+        user.email = ''
+        user.password = ''
       })
   }
 
