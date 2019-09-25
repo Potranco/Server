@@ -10,7 +10,7 @@ class Chars extends React.Component {
   render () {
     return (
       <div className='Content CharList'>
-        Listado de chars
+        Listado de Personajes
       </div>
     )
   }

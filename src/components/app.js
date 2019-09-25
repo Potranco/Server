@@ -5,8 +5,6 @@ import SideBar from './sidebar/index.js'
 import User from '../user/index.js'
 import Page from './page/index.js'
 
-console.log(Page)
-
 const Campaigns = () => <h1>Campañas</h1>
 const Users = () => <h1>Usuarios</h1>
 const Library = () => <h1>Biblioteca</h1>
@@ -41,22 +39,22 @@ class App extends React.Component {
           activeSideBar={activeSideBar}
           body={body}
           user={user} />
+
         <Switch>
           <Route exact path='/' component={home} />
           <Route path='/user/:id/edit' component={editUser} />
           <Route path='/user/:id' component={userProfile} />
           <Route path='/char/create' component={newChar} />
           <Route path='/chars/' component={list} />
-
-          /*
-          <Route path='/campaigns' component={Campaigns} />
-          <Route path='/users' component={Users} exact />
-          <Route path='/library' component={Library} />
-          */
-
-          /* BACKWEB */
           <Route path='/backweb' component={backweb} />
+
         </Switch>
+        /*
+        <Route path='/campaigns' component={Campaigns} />
+        <Route path='/users' component={Users} exact />
+        <Route path='/library' component={Library} />
+        */
+
       </div>
     )
   }
