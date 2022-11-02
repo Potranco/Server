@@ -31,7 +31,7 @@
     "chai-http": "^3.0.0",
     "cloudinary": "^1.11.0",
     "form-data": "^2.3.2",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^3.2.1",
